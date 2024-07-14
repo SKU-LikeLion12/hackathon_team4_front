@@ -4,7 +4,7 @@ import {NavLink} from "react-router-dom";
 export default function Nav() {
 	return (
 		<nav className='flex flex-row items-center justify-evenly'>
-			<div className='text-[25px] text-[#208DF9] font-medium'>
+			<div className='title text-[30px] text-[#208DF9] font-medium'>
 				💪🏻 헬스메이트
 			</div>
 			<div className='flex flex-1 justify-between items-center ml-[20px]'>

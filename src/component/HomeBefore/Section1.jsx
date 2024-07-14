@@ -1,17 +1,16 @@
 import React, {useState} from "react";
+import {NavLink} from "react-router-dom";
 
 export default function Section1() {
 	const [activeForm, setActiveForm] = useState("guardian");
 
 	return (
-		<section className='grid grid-cols-1 lg:grid-cols-2 place-content-center py-[140px]'>
-			<div className=''>
-				<img
-					className='pb-[80px] pt-[20px] px-[80px] '
-					src='img/mainpage.png'
-					alt=''
-				/>
-			</div>
+		<section className='grid grid-cols-1 lg:grid-cols-2 place-content-center pt-[100px] pb-[60px]'>
+			<img
+				className='pb-[80px] pt-[20px] px-[80px] '
+				src='img/mainpage.png'
+				alt=''
+			/>
 			<div className='flex flex-col '>
 				<div className='font-semibold flex flex-col justify-start text-[#333c47]'>
 					<span className='text-[30px]'>
@@ -21,13 +20,13 @@ export default function Section1() {
 						건강 동반자, 헬스 메이트
 					</span>
 				</div>
-				<div className='bg-white rounded-[10px] mt-[70px] pt-[30px] pb-[50px] px-[20px] drop-shadow w-[80%]'>
-					<div className='flex flex-row items-center justify-evenly mb-[40px]'>
+				<div className='flex flex-col itmes-center bg-white rounded-[10px] mt-[70px] pt-[30px] pb-[50px] px-[20px] drop-shadow w-[80%]'>
+					<div className='flex justify-evenly itmes-center bg-[#F5F7F9] rounded-[10px] mb-[40px] mx-[22px]'>
 						<button
 							className={
 								activeForm === "guardian"
-									? "bg-[#54A7FA] rounded-[10px] text-white px-[25px] py-[8px]"
-									: "px-[12px] py-[8px]"
+									? "w-full bg-[#208df9] rounded-[10px] text-white px-[25px] py-[8px]"
+									: "w-full px-[12px] py-[8px]"
 							}
 							onClick={() => setActiveForm("guardian")}
 						>
@@ -36,8 +35,8 @@ export default function Section1() {
 						<button
 							className={
 								activeForm === "uniqueKey"
-									? "bg-[#54A7FA] rounded-[10px] text-white px-[25px] py-[8px]"
-									: "px-[12px] py-[8px]"
+									? "w-full bg-[#208df9] rounded-[10px] text-white px-[25px] py-[8px]"
+									: "w-full px-[12px] py-[8px]"
 							}
 							onClick={() => setActiveForm("uniqueKey")}
 						>
@@ -62,9 +61,12 @@ export default function Section1() {
 								/>
 							</div>
 							<div className='flex flex-col items-center'>
-								<button className='w-[90%] h-[40px] rounded-[10px] bg-[#208df9] text-white font-medium'>
+								<NavLink
+									to=''
+									className='w-[90%] h-[40px] rounded-[10px] bg-[#208df9] text-white font-medium'
+								>
 									로그인
-								</button>
+								</NavLink>
 							</div>
 						</form>
 					)}

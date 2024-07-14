@@ -1,6 +1,6 @@
 import React from "react";
-import Nav from "../component/HomeA/Nav";
-import Section1 from "../component/HomeA/Section1";
+import Nav from "../component/HomeBefore/Nav";
+import Section1 from "../component/HomeBefore/Section1";
 
 export default function HomeB() {
 	return (

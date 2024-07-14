@@ -27,11 +27,30 @@ https://fonts.google.com/noto/specimen/Noto+Sans+KR?query=korea
 	font-style: normal;
 }
 
-.Signup {
+.Mobile {
 	max-width: 500px;
 	min-height: 100vh;
 	margin-left: auto;
 	margin-right: auto;
 	overflow-x: hidden;
-	background-color: white;
+}
+
+/*Titlefont*/
+@font-face {
+	font-family: "RixInooAriDuriR";
+	src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2207-01@1.0/RixInooAriDuriR.woff2")
+		format("woff2");
+}
+
+/*Mainfont*/
+@font-face {
+	font-family: "BMJUA";
+	src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/BMJUA.woff")
+		format("woff");
+	font-weight: normal;
+	font-style: normal;
+}
+
+.title {
+	font-family: "BMJUA", sans-serif;
 }
