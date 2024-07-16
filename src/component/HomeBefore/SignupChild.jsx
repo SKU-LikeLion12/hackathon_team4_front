@@ -32,33 +32,6 @@ export default function SignupChild() {
 					</span>
 				</div>
 				<form className='' action=''>
-					{/* 자녀 등록 form post */}
-					<img
-						src={
-							imgFile ? imgFile : `/images/icon/user.png`
-						}
-						alt='프로필 이미지'
-					/>
-					<div className='w-[50px] bg-black rounded-[100px]'>
-						<input
-							type='file'
-							accept='image/*'
-							id='profileImg'
-							onChange={saveImgFile}
-							ref={imgRef}
-						/>
-					</div>
-					<label
-						className='signup-profileImg-label'
-						htmlFor='profileImg'
-						type='file'
-						accept='image/*'
-						id='profileImg'
-						onChange={saveImgFile}
-						ref={imgRef}
-					>
-						프로필 이미지 추가
-					</label>
 					<div className='flex flex-col items-start'>
 						<span className='text-[13px]'>이름</span>
 						<input
@@ -99,11 +72,24 @@ export default function SignupChild() {
 							type='date'
 						/>
 					</div>
+					<div className='flex flex-row items-start'>
+						<div className='flex flex-col items-start'>
+							<span className='text-[13px]'>키</span>
+							<input
+								className='w-full bg-[#f9fafb] border-[1px] border-[#c2c8cf] rounded-[10px] mr-[10px] mt-[12px] mb-[30px] px-[16px] py-[5px]'
+								type='height'
+							/>
+						</div>
+						<div className='flex flex-col items-start'>
+							<span className='text-[13px]'>몸무게</span>
+							<input
+								className='w-full bg-[#f9fafb] border-[1px] border-[#c2c8cf] rounded-[10px] ml-[10px] mt-[12px] mb-[30px] px-[16px] py-[5px]'
+								type='text'
+							/>
+						</div>
+					</div>
 					<div className='flex '>
-						<button
-							// onClick={Click}
-							className='w-full h-[45px] rounded-[10px] bg-[#208df9] text-white font-mediumm mt-[40px]'
-						>
+						<button className='flex items-center justify-center w-full h-[45px] rounded-[10px] bg-[#208df9] text-white font-mediumm mt-[40px]'>
 							다음
 						</button>
 					</div>

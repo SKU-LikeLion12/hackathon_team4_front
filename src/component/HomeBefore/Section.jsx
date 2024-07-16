@@ -1,11 +1,11 @@
 import React, {useState} from "react";
 import {NavLink} from "react-router-dom";
 
-export default function Section1() {
+export default function Section() {
 	const [activeForm, setActiveForm] = useState("guardian");
 
 	return (
-		<section className='grid grid-cols-1 lg:grid-cols-2 place-content-center pt-[100px] pb-[60px]'>
+		<section className='grid grid-cols-1 lg:grid-cols-2 place-content-center pt-[100px] pb-[40px]'>
 			<img
 				className='pb-[80px] pt-[20px] px-[80px] '
 				src='img/mainpage.png'
@@ -62,8 +62,8 @@ export default function Section1() {
 							</div>
 							<div className='flex flex-col items-center'>
 								<NavLink
-									to=''
-									className='w-[90%] h-[40px] rounded-[10px] bg-[#208df9] text-white font-medium'
+									to='/HomeA'
+									className='flex items-center justify-center w-[90%] h-[40px] rounded-[10px] bg-[#208df9] text-white font-medium'
 								>
 									로그인
 								</NavLink>
@@ -81,9 +81,12 @@ export default function Section1() {
 								/>
 							</div>
 							<div className='flex flex-col items-center'>
-								<button className='w-[90%] h-[40px] rounded-[10px] bg-[#208df9] text-white font-medium'>
+								<NavLink
+									to='/HomeA'
+									className='flex items-center justify-center w-[90%] h-[40px] rounded-[10px] bg-[#208df9] text-white font-medium'
+								>
 									로그인
-								</button>
+								</NavLink>
 							</div>
 						</form>
 					)}

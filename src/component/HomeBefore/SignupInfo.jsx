@@ -1,5 +1,4 @@
 import React from "react";
-import {NavLink} from "react-router-dom";
 
 export default function Signup_Info() {
 	return (
@@ -46,12 +45,12 @@ export default function Signup_Info() {
 						/>
 					</div>
 					<div className=''>
-						<NavLink
+						<button
 							to='/SignupChild'
 							className='flex items-center justify-center w-full h-[45px] rounded-[10px] bg-[#208df9] text-white font-mediumm mt-[40px]'
 						>
 							다음
-						</NavLink>
+						</button>
 					</div>
 				</form>
 			</div>

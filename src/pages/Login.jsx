@@ -1,6 +1,15 @@
 import React, {useState} from "react";
+import {NavLink} from "react-router-dom";
 
 export default function Login() {
+	const [id, setId] = useState("");
+	const [pw, setPw] = useState("");
+	const [key, setKey] = useState("");
+
+	const handleId = (e) => {
+		setId(e.target.value);
+	};
+
 	const [activeForm, setActiveForm] = useState("guardian");
 	return (
 		<div className='Mobile bg-[#F0F7FF] pt-[40px] pb-[20px]'>
@@ -52,6 +61,8 @@ export default function Login() {
 								className='w-[90%] bg-[#f9fafb] border-[1px] border-[#c2c8cf] rounded-[10px] px-[16px] py-[5px]'
 								placeholder='아이디'
 								type='text'
+								value={id}
+								onChange={(e) => setId(e.target.value)}
 							/>
 						</div>
 						<div className='flex flex-col items-center'>
@@ -59,10 +70,15 @@ export default function Login() {
 								className='w-[90%] bg-[#f9fafb] border-[1px] border-[#c2c8cf] rounded-[10px] mt-[12px] mb-[30px] px-[16px] py-[5px]'
 								placeholder='비밀번호'
 								type='password'
+								value={pw}
+								onChange={(e) => setPw(e.target.value)}
 							/>
 						</div>
 						<div className='flex flex-col items-center'>
-							<button className='w-[90%] h-[40px] rounded-[10px] bg-[#208df9] text-white font-medium'>
+							<button
+								to='/HomeA'
+								className='flex items-center justify-center w-[90%] h-[40px] rounded-[10px] bg-[#208df9] text-white font-medium'
+							>
 								로그인
 							</button>
 						</div>
@@ -76,10 +92,14 @@ export default function Login() {
 								className='w-[90%] bg-[#f9fafb] border-[1px] border-[#c2c8cf] rounded-[10px] mt-[12px] mb-[30px] px-[16px] py-[5px]'
 								placeholder='고유키'
 								type='text'
+								value={key}
 							/>
 						</div>
 						<div className='flex flex-col items-center'>
-							<button className='w-[90%] h-[40px] rounded-[10px] bg-[#208df9] text-white font-medium'>
+							<button
+								to='/HomeA'
+								className='flex items-center justify-center w-[90%] h-[40px] rounded-[10px] bg-[#208df9] text-white font-medium'
+							>
 								로그인
 							</button>
 						</div>
