@@ -1,18 +1,27 @@
 import React, {useState} from "react";
-import {NavLink} from "react-router-dom";
 
 export default function Login() {
-	const [id, setId] = useState("");
-	const [pw, setPw] = useState("");
-	const [key, setKey] = useState("");
+	const [logininputs, setLogInputs] = useState({
+		id: "",
+		pw: "",
+		key: "",
+	});
 
-	const handleId = (e) => {
-		setId(e.target.value);
+	const handleChange = (e) => {
+		setLogInputs({
+			...logininputs,
+			[e.target.name]: e.target.value,
+		});
+		console.log(e.target.value);
 	};
 
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		alert("로그인이 완료되었습니다!");
+	};
 	const [activeForm, setActiveForm] = useState("guardian");
 	return (
-		<div className='Mobile bg-[#F0F7FF] pt-[40px] pb-[20px]'>
+		<div className='Mobile flex flex-col items-center bg-[#F0F7FF] pt-[40px] pb-[20px]'>
 			<div className='flex justify-center text-[25px] text-[#208DF9] font-bold'>
 				헬스메이트
 			</div>
@@ -54,30 +63,33 @@ export default function Login() {
 					</button>
 				</div>
 				{activeForm === "guardian" && (
-					<form action=''>
+					<form onSubmit={handleSubmit} method='post'>
 						{/* 보호자(모니터링) 로그인 */}
 						<div className='flex flex-col items-center'>
 							<input
+								name='id'
 								className='w-[90%] bg-[#f9fafb] border-[1px] border-[#c2c8cf] rounded-[10px] px-[16px] py-[5px]'
 								placeholder='아이디'
 								type='text'
-								value={id}
-								onChange={(e) => setId(e.target.value)}
+								value={logininputs.id}
+								onChange={handleChange}
 							/>
 						</div>
 						<div className='flex flex-col items-center'>
 							<input
+								name='pw'
 								className='w-[90%] bg-[#f9fafb] border-[1px] border-[#c2c8cf] rounded-[10px] mt-[12px] mb-[30px] px-[16px] py-[5px]'
 								placeholder='비밀번호'
 								type='password'
-								value={pw}
-								onChange={(e) => setPw(e.target.value)}
+								value={logininputs.pw}
+								onChange={handleChange}
 							/>
 						</div>
 						<div className='flex flex-col items-center'>
 							<button
 								to='/HomeA'
 								className='flex items-center justify-center w-[90%] h-[40px] rounded-[10px] bg-[#208df9] text-white font-medium'
+								type='submit'
 							>
 								로그인
 							</button>
@@ -85,20 +97,23 @@ export default function Login() {
 					</form>
 				)}
 				{activeForm === "uniqueKey" && (
-					<form action=''>
+					<form onSubmit={handleSubmit} method='post'>
 						{/* 고유키 로그인 */}
 						<div className='flex flex-col items-center'>
 							<input
+								name='key'
 								className='w-[90%] bg-[#f9fafb] border-[1px] border-[#c2c8cf] rounded-[10px] mt-[12px] mb-[30px] px-[16px] py-[5px]'
 								placeholder='고유키'
 								type='text'
-								value={key}
+								value={logininputs.key}
+								onChange={handleChange}
 							/>
 						</div>
 						<div className='flex flex-col items-center'>
 							<button
 								to='/HomeA'
 								className='flex items-center justify-center w-[90%] h-[40px] rounded-[10px] bg-[#208df9] text-white font-medium'
+								type='submit'
 							>
 								로그인
 							</button>
