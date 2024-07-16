@@ -7,3 +7,50 @@ body {
 	margin: 0;
 	padding: 0;
 }
+
+/*font 클래스명
+tailwind : weight : 속성
+font-thin , 100 , thin
+font-extralight , 200 , extralight
+font-light , 300 , Light
+font-normal , 400 , Regular
+font-medium , 500 , Medium
+font-semibold , 600 ,SemiBold
+font-bold , 700 , Bold
+font-extrabold , 800 , ExtraBold
+확인하고 싶으면 여기로 접속
+https://fonts.google.com/noto/specimen/Noto+Sans+KR?query=korea
+*/
+.Noto {
+	font-family: "Noto Sans KR", sans-serif;
+	font-optical-sizing: auto;
+	font-style: normal;
+}
+
+.Mobile {
+	max-width: 500px;
+	min-height: 100vh;
+	margin-left: auto;
+	margin-right: auto;
+	overflow-x: hidden;
+}
+
+/*Titlefont*/
+@font-face {
+	font-family: "RixInooAriDuriR";
+	src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2207-01@1.0/RixInooAriDuriR.woff2")
+		format("woff2");
+}
+
+/*Mainfont*/
+@font-face {
+	font-family: "BMJUA";
+	src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/BMJUA.woff")
+		format("woff");
+	font-weight: normal;
+	font-style: normal;
+}
+
+.title {
+	font-family: "BMJUA", sans-serif;
+}
