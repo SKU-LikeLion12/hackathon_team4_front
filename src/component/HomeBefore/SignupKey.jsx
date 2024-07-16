@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Signup_Key() {
+export default function SignupKey() {
 	return (
 		<div className='Mobile pt-[40px] pb-[20px]'>
 			<div className='flex justify-center text-[25px] text-[#208DF9] font-bold'>
