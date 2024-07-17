@@ -1,18 +1,50 @@
 import React, {useState} from "react";
-import {NavLink} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
+import HomeA from "../pages/HomeA";
+import axios from "axios";
 
 export default function Login() {
-	const [id, setId] = useState("");
-	const [pw, setPw] = useState("");
-	const [key, setKey] = useState("");
+	const navigate = useNavigate();
+	const [logininputs, setLogInputs] = useState({
+		id: "",
+		pw: "",
+		key: "",
+	});
 
-	const handleId = (e) => {
-		setId(e.target.value);
+	const handleChange = (e) => {
+		setLogInputs({
+			...logininputs,
+			[e.target.name]: e.target.value,
+		});
+		console.log(e.target.value);
+	};
+
+	const onSubmit = async (e) => {
+		e.preventDefault(); // 폼의 기본 동작을 막음
+		try {
+			const response = await axios.post(
+				"http://34.47.99.4:3306/api/login",
+				{
+					id: "",
+					pw: "",
+					key: "",
+				}
+			);
+			console.log("백엔드에 잘 보냄", response.data);
+			// 백엔드에 잘 보내졌으면 실행되는 코드
+			if (response.status === 200) {
+				navigate(<HomeA />); // 요청이 성공하면 페이지 이동
+				alert("로그인이 완료되었습니다!");
+			}
+		} catch (error) {
+			console.error("오류", error);
+			console.log("실패");
+		}
 	};
 
 	const [activeForm, setActiveForm] = useState("guardian");
 	return (
-		<div className='Mobile bg-[#F0F7FF] pt-[40px] pb-[20px]'>
+		<div className='Mobile flex flex-col items-center bg-[#F0F7FF] pt-[40px] pb-[20px]'>
 			<div className='flex justify-center text-[25px] text-[#208DF9] font-bold'>
 				헬스메이트
 			</div>
@@ -54,30 +86,33 @@ export default function Login() {
 					</button>
 				</div>
 				{activeForm === "guardian" && (
-					<form action=''>
+					<form onSubmit={onSubmit} method='post'>
 						{/* 보호자(모니터링) 로그인 */}
 						<div className='flex flex-col items-center'>
 							<input
+								name='id'
 								className='w-[90%] bg-[#f9fafb] border-[1px] border-[#c2c8cf] rounded-[10px] px-[16px] py-[5px]'
 								placeholder='아이디'
 								type='text'
-								value={id}
-								onChange={(e) => setId(e.target.value)}
+								value={logininputs.id}
+								onChange={handleChange}
 							/>
 						</div>
 						<div className='flex flex-col items-center'>
 							<input
+								name='pw'
 								className='w-[90%] bg-[#f9fafb] border-[1px] border-[#c2c8cf] rounded-[10px] mt-[12px] mb-[30px] px-[16px] py-[5px]'
 								placeholder='비밀번호'
 								type='password'
-								value={pw}
-								onChange={(e) => setPw(e.target.value)}
+								value={logininputs.pw}
+								onChange={handleChange}
 							/>
 						</div>
 						<div className='flex flex-col items-center'>
 							<button
 								to='/HomeA'
 								className='flex items-center justify-center w-[90%] h-[40px] rounded-[10px] bg-[#208df9] text-white font-medium'
+								type='submit'
 							>
 								로그인
 							</button>
@@ -85,20 +120,23 @@ export default function Login() {
 					</form>
 				)}
 				{activeForm === "uniqueKey" && (
-					<form action=''>
+					<form onSubmit={onSubmit} method='post'>
 						{/* 고유키 로그인 */}
 						<div className='flex flex-col items-center'>
 							<input
+								name='key'
 								className='w-[90%] bg-[#f9fafb] border-[1px] border-[#c2c8cf] rounded-[10px] mt-[12px] mb-[30px] px-[16px] py-[5px]'
 								placeholder='고유키'
 								type='text'
-								value={key}
+								value={logininputs.key}
+								onChange={handleChange}
 							/>
 						</div>
 						<div className='flex flex-col items-center'>
 							<button
 								to='/HomeA'
 								className='flex items-center justify-center w-[90%] h-[40px] rounded-[10px] bg-[#208df9] text-white font-medium'
+								type='submit'
 							>
 								로그인
 							</button>
