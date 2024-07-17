@@ -54,3 +54,9 @@ https://fonts.google.com/noto/specimen/Noto+Sans+KR?query=korea
 .title {
 	font-family: "BMJUA", sans-serif;
 }
+
+input:focus {
+	border: solid 2px #208df9;
+	/* border-color: #208df9; */
+	outline: none;
+}

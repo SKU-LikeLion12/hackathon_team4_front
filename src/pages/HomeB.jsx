@@ -5,7 +5,7 @@ import Section from "../component/HomeBefore/Section";
 export default function HomeB() {
 	return (
 		<>
-			<div className='Home bg-[#F0F7FF] px-[130px] py-[30px]'>
+			<div className='Home bg-[#F0F7FF] px-[30px] lg:px-[130px] py-[30px]'>
 				<Nav />
 				<Section />
 			</div>
