@@ -5,9 +5,9 @@ export default function Section() {
 	const [activeForm, setActiveForm] = useState("guardian");
 
 	return (
-		<section className='grid grid-cols-1 lg:grid-cols-2 place-content-center pt-[100px] pb-[40px]'>
+		<section className='grid grid-cols-1 lg:grid-cols-2 place-content-center pt-[80px] pb-[40px]'>
 			<img
-				className='pb-[80px] pt-[20px] px-[80px] '
+				className='pb-[80px] pt-[20px] px-[120px] '
 				src='img/mainpage.png'
 				alt=''
 			/>
@@ -20,7 +20,7 @@ export default function Section() {
 						건강 동반자, 헬스 메이트
 					</span>
 				</div>
-				<div className='flex flex-col itmes-center bg-white rounded-[10px] mt-[70px] pt-[30px] pb-[50px] px-[20px] drop-shadow w-[80%]'>
+				<div className='flex flex-col itmes-center w-[500px] bg-white rounded-[10px] mt-[70px] pt-[30px] pb-[50px] px-[20px] drop-shadow w-[80%]'>
 					<div className='flex justify-evenly itmes-center bg-[#F5F7F9] rounded-[10px] mb-[40px] mx-[22px]'>
 						<button
 							className={
