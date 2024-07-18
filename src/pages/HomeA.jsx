@@ -1,17 +1,5 @@
-import React from "react";
-import Nav from "../component/HomeAfter/Nav";
-// import {
-// 	BrowserRouter,
-// 	Route,
-// 	Routes,
-// } from "react-router-dom";
+import {React} from "react";
 
 export default function HomeA() {
-	return (
-		<>
-			<div className='Home bg-[#F0F7FF] px-[130px] py-[30px]'>
-				<Nav />
-			</div>
-		</>
-	);
+	return <div className='Home bg-white'></div>;
 }
