@@ -1,11 +1,32 @@
+import axios from "axios";
 import React, {useState} from "react";
-import {NavLink} from "react-router-dom";
+import {useCookies} from "react-cookie";
 
-export default function Section() {
+export default function Section({handleLogin, input}) {
+	const [cookies, setCookies] = useCookies(["token"]);
 	const [activeForm, setActiveForm] = useState("guardian");
 
+	async function getLogin(e) {
+		e.preventDefault();
+		try {
+			const response = await axios.post("/login", {
+				id: input.id,
+				pwd: input.pwd,
+			});
+			console.log(response);
+			if (response.status === 200) {
+				setCookies("token", response.data);
+			}
+		} catch (e) {
+			console.log(e);
+		}
+	}
 	return (
-		<section className='grid grid-cols-1 lg:grid-cols-2 place-content-center pt-[80px] pb-[40px]'>
+		<section
+			className='bg-[
+		
+		] grid grid-cols-1 lg:grid-cols-2 place-content-center pt-[80px] pb-[40px]'
+		>
 			<img
 				className='pb-[80px] pt-[20px] px-[120px] '
 				src='img/mainpage.png'
@@ -20,7 +41,7 @@ export default function Section() {
 						건강 동반자, 헬스 메이트
 					</span>
 				</div>
-				<div className='flex flex-col itmes-center w-[500px] bg-white rounded-[10px] mt-[70px] pt-[30px] pb-[50px] px-[20px] drop-shadow w-[80%]'>
+				<div className='flex flex-col itmes-center w-[480px] bg-white rounded-[10px] mt-[70px] pt-[30px] pb-[50px] px-[20px] drop-shadow w-[80%]'>
 					<div className='flex justify-evenly itmes-center bg-[#F5F7F9] rounded-[10px] mb-[40px] mx-[22px]'>
 						<button
 							className={
@@ -51,6 +72,10 @@ export default function Section() {
 									className='w-[90%] bg-[#f9fafb] border-[1px] border-[#c2c8cf] rounded-[10px] px-[16px] py-[5px]'
 									placeholder='아이디'
 									type='text'
+									onChange={(e) =>
+										handleLogin("id", e.target.value)
+									}
+									value={input.id}
 								/>
 							</div>
 							<div className='flex flex-col items-center'>
@@ -58,15 +83,19 @@ export default function Section() {
 									className='w-[90%] bg-[#f9fafb] border-[1px] border-[#c2c8cf] rounded-[10px] mt-[12px] mb-[30px] px-[16px] py-[5px]'
 									placeholder='비밀번호'
 									type='password'
+									onChange={(e) =>
+										handleLogin("pwd", e.target.value)
+									}
+									value={input.pwd}
 								/>
 							</div>
 							<div className='flex flex-col items-center'>
-								<NavLink
-									to='/HomeA'
+								<button
+									onClick={(e) => getLogin(e)}
 									className='flex items-center justify-center w-[90%] h-[40px] rounded-[10px] bg-[#208df9] text-white font-medium'
 								>
 									로그인
-								</NavLink>
+								</button>
 							</div>
 						</form>
 					)}
@@ -78,15 +107,16 @@ export default function Section() {
 									className='w-[90%] bg-[#f9fafb] border-[1px] border-[#c2c8cf] rounded-[10px] mt-[12px] mb-[30px] px-[16px] py-[5px]'
 									placeholder='고유키'
 									type='text'
+									onChange={(e) =>
+										handleLogin("uniqueKey", e.target.value)
+									}
+									value={input.uniqueKey}
 								/>
 							</div>
 							<div className='flex flex-col items-center'>
-								<NavLink
-									to='/HomeA'
-									className='flex items-center justify-center w-[90%] h-[40px] rounded-[10px] bg-[#208df9] text-white font-medium'
-								>
+								<button className='flex items-center justify-center w-[90%] h-[40px] rounded-[10px] bg-[#208df9] text-white font-medium'>
 									로그인
-								</NavLink>
+								</button>
 							</div>
 						</form>
 					)}
