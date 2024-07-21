@@ -17,11 +17,11 @@ export default function HealthCare() {
 		},
 	];
 
-	const menu = menus.map((Menu) => {
+	const menu = menus.map((Menu, i) => {
 		return (
 			<>
 				<button
-					ket={Menu.id}
+					ket={i}
 					className='HealthCareBox bg-[white] w-[300px] h-[350px] drop-shadow-md pt-[10px] pl-[50px]'
 				>
 					<div className='flex flex-col items-start'>

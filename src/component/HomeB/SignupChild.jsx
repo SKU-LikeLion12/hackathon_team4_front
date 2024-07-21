@@ -42,23 +42,26 @@ export default function SignupChild() {
 					</div>
 					<div className='flex flex-col items-start'>
 						<span className='text-[13px]'>성별</span>
-						<select className='flex' name='gender'>
-							<option
+						<div
+							className='flex flex flex-row items-start'
+							name='gender'
+						>
+							<button
 								className='w-full bg-[#f9fafb] border-[1px] border-[#c2c8cf] rounded-[10px] mt-[12px] mb-[30px] px-[16px] py-[5px]'
 								key='남'
 								value='남자'
 							>
 								남자
-							</option>
-							<option
+							</button>
+							<button
 								className='w-full bg-[#f9fafb] border-[1px] border-[#c2c8cf] rounded-[10px] mt-[12px] mb-[30px] px-[16px] py-[5px]'
 								key=''
 								value='여자'
 								type='button'
 							>
 								여자
-							</option>
-						</select>
+							</button>
+						</div>
 						<input
 							className='w-full bg-[#f9fafb] border-[1px] border-[#c2c8cf] rounded-[10px] mt-[12px] mb-[30px] px-[16px] py-[5px]'
 							placeholder='휴대전화번호'

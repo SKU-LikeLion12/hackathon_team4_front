@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {useNavigate} from "react-router-dom";
-import HomeA from "../../pages/HomeA";
+
 import axios from "axios";
 
 export default function Login() {
@@ -33,7 +33,6 @@ export default function Login() {
 			console.log("백엔드에 잘 보냄", response.data);
 			// 백엔드에 잘 보내졌으면 실행되는 코드
 			if (response.status === 200) {
-				navigate(<HomeA />); // 요청이 성공하면 페이지 이동
 				alert("로그인이 완료되었습니다!");
 			}
 		} catch (error) {
@@ -110,7 +109,6 @@ export default function Login() {
 						</div>
 						<div className='flex flex-col items-center'>
 							<button
-								to='/HomeA'
 								className='flex items-center justify-center w-[90%] h-[40px] rounded-[10px] bg-[#208df9] text-white font-medium'
 								type='submit'
 							>
@@ -134,7 +132,6 @@ export default function Login() {
 						</div>
 						<div className='flex flex-col items-center'>
 							<button
-								to='/HomeA'
 								className='flex items-center justify-center w-[90%] h-[40px] rounded-[10px] bg-[#208df9] text-white font-medium'
 								type='submit'
 							>
