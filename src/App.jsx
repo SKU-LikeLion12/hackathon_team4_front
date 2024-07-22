@@ -4,21 +4,23 @@ import {
 	Route,
 	Routes,
 } from "react-router-dom";
-import Home from "./component/HomeB/BeforeLoginHome";
 import Nav from "./component/Nav";
 import Footer from "./component/Footer";
+import Home from "./pages/BeforeLoginHome";
 import Signup from "./component/HomeB/Signup";
 import SignupChild from "./component/HomeB/SignupChild";
 import SignupKey from "./component/HomeB/SignupKey";
 import Login from "./component/HomeB/Login";
 import HealthCare from "./component/HomeA/HealthCare";
+import Medicine from "./component/HomeA/Medicine";
+
 import Parents from "./pages/Parents";
 
 function App() {
 	return (
 		<Router>
 			<Nav />
-			<div className='App w-full h-screen'>
+			<div className='App'>
 				<Routes>
 					<Route path='/' element={<Home />} />
 					<Route path='/Signup' element={<Signup />} />
@@ -36,6 +38,7 @@ function App() {
 						element={<HealthCare />}
 					/>
 					<Route path='/Parents' element={<Parents />} />
+					<Route path='/Medicine' element={<Medicine />} />
 				</Routes>
 			</div>
 			<Footer />

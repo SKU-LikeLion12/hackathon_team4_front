@@ -44,14 +44,14 @@ export default function Nav({setPage}) {
 			<div className='flex flex-1 justify-between items-center ml-[20px]'>
 				<div className='flex'>
 					{navs.map((n) => (
-						<div
+						<NavLink
 							key={n.id}
 							to={n.src}
 							onClick={() => setPage(n.src)}
 							className='text-balck hover:text-[#208DF9] focus:text-[#208DF9]'
 						>
 							{n.navname}
-						</div>
+						</NavLink>
 					))}
 				</div>
 				<div>

@@ -4,7 +4,7 @@ export default function Section() {
 	const [activeForm, setActiveForm] = useState("guardian");
 
 	return (
-		<section className='grid grid-cols-1 lg:grid-cols-2 place-content-center pt-[80px] pb-[40px]'>
+		<section className='bg-[#F0F7FF] grid grid-cols-1 lg:grid-cols-2 place-content-center pt-[80px] pb-[40px]'>
 			<img
 				className='pb-[80px] pt-[20px] px-[120px] '
 				src='img/mainpage.png'
