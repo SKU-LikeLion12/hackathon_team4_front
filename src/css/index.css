@@ -66,11 +66,9 @@ input:focus {
 }
 
 .OneDayCheckBox {
-	display:grid;
+	display: grid;
 	grid-template-columns: 400px 400px;
 	column-gap: 100px;
 	row-gap: 90px;
 	justify-content: center;
-	margin-top:20px;
-	margin-bottom: 50px;
 }

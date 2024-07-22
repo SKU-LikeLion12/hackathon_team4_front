@@ -7,12 +7,13 @@ import {
 import Nav from "./component/Nav";
 import Footer from "./component/Footer";
 import Home from "./pages/BeforeLoginHome";
-import Signup from "./component/HomeB/Signup";
-import SignupChild from "./component/HomeB/SignupChild";
-import SignupKey from "./component/HomeB/SignupKey";
-import Login from "./component/HomeB/Login";
-import HealthCare from "./component/HomeA/HealthCare";
-import Medicine from "./component/HomeA/Medicine";
+import Signup from "./pages/HomeB/Signup";
+import SignupChild from "./pages/HomeB/SignupChild";
+import SignupKey from "./pages/HomeB/SignupKey";
+import Login from "./pages/HomeB/Login";
+import HealthCare from "./pages/HomeA/HealthCare";
+import Medicine from "./pages/HomeA/Medicine";
+import OneDayCheck from "./pages/HomeA/OneDayCheck";
 
 import Parents from "./pages/Parents";
 
@@ -39,6 +40,10 @@ function App() {
 					/>
 					<Route path='/Parents' element={<Parents />} />
 					<Route path='/Medicine' element={<Medicine />} />
+					<Route
+						path='/OneDayCheck'
+						element={<OneDayCheck />}
+					/>
 				</Routes>
 			</div>
 			<Footer />

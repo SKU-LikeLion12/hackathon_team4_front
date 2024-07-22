@@ -1,18 +1,6 @@
-import React, {useState, useRef} from "react";
+import React from "react";
 
 export default function SignupChild() {
-	const [imgFile, setImgFile] = useState("");
-	const imgRef = useRef();
-
-	// 이미지 업로드 input의 onChange
-	const saveImgFile = () => {
-		const file = imgRef.current.files[0];
-		const reader = new FileReader();
-		reader.readAsDataURL(file);
-		reader.onloadend = () => {
-			setImgFile(reader.result);
-		};
-	};
 	return (
 		<div className='Mobile pt-[40px] pb-[20px]'>
 			<div className='flex justify-center text-[25px] text-[#208DF9] font-bold'>
@@ -42,26 +30,29 @@ export default function SignupChild() {
 					</div>
 					<div className='flex flex-col items-start'>
 						<span className='text-[13px]'>성별</span>
-						<div
-							className='flex flex flex-row items-start'
+						<ul
+							className='flex flex flex-row items-start w-[50%]'
 							name='gender'
 						>
-							<button
-								className='w-full bg-[#f9fafb] border-[1px] border-[#c2c8cf] rounded-[10px] mt-[12px] mb-[30px] px-[16px] py-[5px]'
-								key='남'
-								value='남자'
-							>
-								남자
-							</button>
-							<button
-								className='w-full bg-[#f9fafb] border-[1px] border-[#c2c8cf] rounded-[10px] mt-[12px] mb-[30px] px-[16px] py-[5px]'
-								key=''
-								value='여자'
-								type='button'
-							>
-								여자
-							</button>
-						</div>
+							<li>
+								<input
+									className='w-full bg-[#f9fafb] border-[1px] border-[#c2c8cf] rounded-[10px] mt-[12px] mb-[30px] px-[16px] py-[5px]'
+									key='남'
+									value='남자'
+									type='radio'
+								/>
+								<label>남자</label>
+							</li>
+							<li>
+								<input
+									className='w-full bg-[#f9fafb] border-[1px] border-[#c2c8cf] rounded-[10px] mt-[12px] mb-[30px] px-[16px] py-[5px]'
+									key=''
+									value='여자'
+									type='radio'
+								/>
+								<label htmlFor=''>여자</label>
+							</li>
+						</ul>
 						<input
 							className='w-full bg-[#f9fafb] border-[1px] border-[#c2c8cf] rounded-[10px] mt-[12px] mb-[30px] px-[16px] py-[5px]'
 							placeholder='휴대전화번호'
@@ -87,6 +78,17 @@ export default function SignupChild() {
 							<span className='text-[13px]'>몸무게</span>
 							<input
 								className='w-full bg-[#f9fafb] border-[1px] border-[#c2c8cf] rounded-[10px] ml-[10px] mt-[12px] mb-[30px] px-[16px] py-[5px]'
+								type='text'
+							/>
+						</div>
+					</div>
+					<div className='flrx flex-row items-start'>
+						<div className='flex flex-col items-start'>
+							<span className='text-[13px]'>
+								복용하는 약
+							</span>
+							<input
+								className='w-full bg-[#f9fafb] border-[1px] border-[#c2c8cf] rounded-[10px] mt-[12px] mb-[30px] px-[16px] py-[5px]'
 								type='text'
 							/>
 						</div>
