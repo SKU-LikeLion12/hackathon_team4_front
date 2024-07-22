@@ -4,7 +4,7 @@ import React from "react";
 
 export default function HealthCare() {
 	return (
-		<div className='bg-[#F0F7FF] py-[60px]'>
+		<div className='w-full h-screen bg-[#F0F7FF] py-[60px]'>
 			<div className='flex justify-center mb-[60px]'>
 				<div className='bg-[#208DF9] w-[700px] h-[250px] rounded-[20px]'>
 					dfsa

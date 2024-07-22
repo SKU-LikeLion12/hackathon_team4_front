@@ -4,7 +4,9 @@ import {
 	Route,
 	Routes,
 } from "react-router-dom";
-import HomeB from "./pages/Home";
+import Home from "./component/HomeB/BeforeLoginHome";
+import Nav from "./component/Nav";
+import Footer from "./component/Footer";
 import Signup from "./component/HomeB/Signup";
 import SignupChild from "./component/HomeB/SignupChild";
 import SignupKey from "./component/HomeB/SignupKey";
@@ -15,9 +17,10 @@ import Parents from "./pages/Parents";
 function App() {
 	return (
 		<Router>
+			<Nav />
 			<div className='App w-full h-screen'>
 				<Routes>
-					<Route path='/' element={<HomeB />} />
+					<Route path='/' element={<Home />} />
 					<Route path='/Signup' element={<Signup />} />
 					<Route
 						path='/SignupChild'
@@ -35,6 +38,7 @@ function App() {
 					<Route path='/Parents' element={<Parents />} />
 				</Routes>
 			</div>
+			<Footer />
 		</Router>
 	);
 }
