@@ -7,34 +7,23 @@ import {
 } from "react-router-dom";
 import HomeB from "./pages/HomeB";
 import HomeA from "./pages/HomeA";
-import HomeANav from "../src/component/HomeANav";
-import HomeBNav from "../src/component/HomeBNav";
 import Signup from "./component/HomeB/Signup";
 import SignupChild from "./component/HomeB/SignupChild";
 import SignupKey from "./component/HomeB/SignupKey";
 import Login from "./component/HomeB/Login";
 import HealthCare from "./component/HomeA/HealthCare";
+import Medicine from "./component/HomeA/Medicine";
+
 
 function App() {
-	const [isLoggedIn, setIsLoggedIn] = useState(false);
+	const [isLoggedIn, setIsLoggedIn] = useState(true);
 
 	return (
 		<Router>
 			<div className='App'>
-				{isLoggedIn ? <HomeANav /> : <HomeBNav />}
+				
+				<Medicine/>
 				<Routes>
-					<Route path='/' element={<HomeB />} />
-					<Route
-						path='/home'
-						isLoggedIn={isLoggedIn}
-						element={
-							isLoggedIn ? (
-								<HomeA />
-							) : (
-								<Navigate to='/homeB' />
-							)
-						}
-					/>
 					<Route path='/Signup' element={<Signup />} />
 					<Route
 						path='/SignupChild'
@@ -49,6 +38,8 @@ function App() {
 						path='/HealthCare'
 						element={<HealthCare />}
 					/>
+				
+					
 				</Routes>
 			</div>
 		</Router>

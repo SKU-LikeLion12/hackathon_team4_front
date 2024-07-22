@@ -1,5 +1,4 @@
 import {React} from "react";
-import Nav from "../component/HomeBNav";
 import Section from "../component/HomeB/HomeBSection";
 
 export default function HomeB() {
