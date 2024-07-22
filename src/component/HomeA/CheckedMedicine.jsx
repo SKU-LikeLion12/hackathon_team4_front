@@ -26,7 +26,7 @@ export default function CheckedMedicine() {
     
 
       {activeTab === 'tab1' && ( // 일단 나중에 수정 
-        <div className="max-w-5xl mt-5 grid grid-rows-3 gap-4 justify-center">
+        <div className=" mt-5 grid grid-rows-3 gap-4 justify-center">
           <div className="p-4 m-5 bg-gray-100 rounded-lg">약 1</div>
           <div className="p-4 m-5 bg-gray-100 rounded-lg">약 2</div>
           <div className="p-4 m-5 bg-gray-100 rounded-lg">약 3</div>
