@@ -33,7 +33,9 @@ export default function Medicine() {
                 </div>
             </div>
         </div>
-        <CheckedMedicine/>   
+        <div className="flex justify-center">  
+                <CheckedMedicine/>   
+        </div>
     </div>
   )
 }
