@@ -2,13 +2,13 @@ import React from "react";
 import {useCookies} from "react-cookie";
 import {NavLink} from "react-router-dom";
 
-export default function Nav() {
+export default function Nav({setPage}) {
 	const [cookies] = useCookies(["token"]);
 	const navs = [
 		{
 			id: 1,
 			navname: "건강관리",
-			src: "/HealthCare",
+			src: "HealthCare",
 		},
 		{
 			id: 2,
@@ -33,29 +33,25 @@ export default function Nav() {
 	];
 
 	return (
-		<nav className='flex flex-row items-center justify-between bg-white border-b-[1px] border-[#DEDEDE] py-[20px] px-[40px]'>
-			<NavLink
+		<nav className='flex flex-row items-center justify-between bg-white border-b-[1px] border-[#DEDEDE] py-[15px] px-[40px]'>
+			<div
 				to='/'
 				className='title text-[30px] text-[#208DF9] font-medium'
+				onClick={() => setPage("default")}
 			>
 				Id FiT
-			</NavLink>
+			</div>
 			<div className='flex flex-1 justify-between items-center ml-[20px]'>
 				<div className='flex'>
 					{navs.map((n) => (
-						<NavLink
+						<div
 							key={n.id}
 							to={n.src}
-							className={({isActive}) =>
-								`mx-[40px] text-[18px] font-medium ${
-									isActive
-										? "text-[#208DF9]"
-										: "text-[black] hover:text-[#208DF9]"
-								}`
-							}
+							onClick={() => setPage(n.src)}
+							className='text-balck hover:text-[#208DF9] focus:text-[#208DF9]'
 						>
 							{n.navname}
-						</NavLink>
+						</div>
 					))}
 				</div>
 				<div>
@@ -80,13 +76,13 @@ export default function Nav() {
 								to='/'
 								className='bg-transparent border-[#208DF9] border-[1px] rounded-[10px] text-[#208DF9] font-medium hover:bg-[#57A9FB] hover:text-[white] hover:border-[#57A9FB] px-[18px] py-[8px] ml-[5px]'
 							>
-								모니터링
+								로그인
 							</button>
 							<button
 								to='/'
 								className='bg-transparent border-[#208DF9] border-[1px] rounded-[10px] text-[#208DF9] font-medium hover:bg-[#57A9FB] hover:text-[white] hover:border-[#57A9FB] px-[18px] py-[8px] ml-[5px]'
 							>
-								로그아웃
+								회원가입
 							</button>
 						</div>
 					)}

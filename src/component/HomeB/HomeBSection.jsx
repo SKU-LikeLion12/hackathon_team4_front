@@ -1,32 +1,52 @@
 import axios from "axios";
 import React, {useState} from "react";
 import {useCookies} from "react-cookie";
+import {useNavigate} from "react-router-dom";
 
-export default function Section({handleLogin, input}) {
-	const [cookies, setCookies] = useCookies(["token"]);
+export default function Section({
+	handleLogin,
+	input,
+	setPage,
+}) {
+	const navigate = useNavigate();
+	const [, setCookies] = useCookies(["token"]);
 	const [activeForm, setActiveForm] = useState("guardian");
 
-	async function getLogin(e) {
+	async function loginGuardian(e) {
 		e.preventDefault();
 		try {
-			const response = await axios.post("/login", {
+			const response = await axios.post("/guardianLogin", {
 				id: input.id,
 				pwd: input.pwd,
 			});
 			console.log(response);
 			if (response.status === 200) {
 				setCookies("token", response.data);
+				navigate("/Parents");
 			}
 		} catch (e) {
 			console.log(e);
 		}
 	}
+
+	async function getUserLogin(e) {
+		e.preventDefault();
+		try {
+			const response = await axios.post("/login", {
+				uniqueKey: input.uniqueKey,
+			});
+			console.log(response);
+			if (response.status === 200) {
+				setCookies("token", response.data);
+				setPage("HealthCare");
+			}
+		} catch (e) {
+			console.log(e);
+		}
+	}
+
 	return (
-		<section
-			className='bg-[
-		
-		] grid grid-cols-1 lg:grid-cols-2 place-content-center pt-[80px] pb-[40px]'
-		>
+		<section className='bg-[#F0F7FF] grid grid-cols-1 lg:grid-cols-2 place-content-center pt-[80px] pb-[40px]'>
 			<img
 				className='pb-[80px] pt-[20px] px-[120px] '
 				src='img/mainpage.png'
@@ -91,7 +111,7 @@ export default function Section({handleLogin, input}) {
 							</div>
 							<div className='flex flex-col items-center'>
 								<button
-									onClick={(e) => getLogin(e)}
+									onClick={(e) => loginGuardian(e)}
 									className='flex items-center justify-center w-[90%] h-[40px] rounded-[10px] bg-[#208df9] text-white font-medium'
 								>
 									로그인
@@ -114,7 +134,10 @@ export default function Section({handleLogin, input}) {
 								/>
 							</div>
 							<div className='flex flex-col items-center'>
-								<button className='flex items-center justify-center w-[90%] h-[40px] rounded-[10px] bg-[#208df9] text-white font-medium'>
+								<button
+									onClick={(e) => getUserLogin(e)}
+									className='flex items-center justify-center w-[90%] h-[40px] rounded-[10px] bg-[#208df9] text-white font-medium'
+								>
 									로그인
 								</button>
 							</div>

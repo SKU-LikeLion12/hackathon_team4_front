@@ -1,8 +1,10 @@
 import React, {useEffect, useState} from "react";
-import HomeBNav from "../component/Nav";
+import Nav from "../component/Nav";
 import Section from "../component/HomeB/HomeBSection";
+import HealthCare from "../component/HomeA/HealthCare";
 
 export default function HomeB() {
+	const [page, setPage] = useState("default");
 	const [input, setInput] = useState({
 		id: "",
 		pwd: "",
@@ -16,14 +18,27 @@ export default function HomeB() {
 		}));
 	};
 
+	const componentMap = {
+		HealthCare: <HealthCare />,
+		default: (
+			<Section
+				handleLogin={handleLogin}
+				input={input}
+				setPage={setPage}
+			/>
+		),
+	};
+
+	const componentToShow = componentMap[page];
+
 	useEffect(() => {
 		console.log("input: ", input);
 	}, [input]);
 	return (
 		<>
 			<div className='Home'>
-				<HomeBNav />
-				<Section handleLogin={handleLogin} input={input} />
+				<Nav setPage={setPage} />
+				{componentToShow}
 			</div>
 		</>
 	);
