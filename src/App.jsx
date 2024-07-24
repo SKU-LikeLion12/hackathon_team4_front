@@ -14,7 +14,6 @@ import Login from "./pages/HomeB/Login";
 import HealthCare from "./pages/HomeA/HealthCare";
 import Medicine from "./pages/HomeA/Medicine";
 import OneDayCheck from "./pages/HomeA/OneDayCheck";
-
 import Parents from "./pages/Parents";
 
 function App() {
@@ -44,6 +43,7 @@ function App() {
 						path='/OneDayCheck'
 						element={<OneDayCheck />}
 					/>
+					<Route path='Parents' element={<Parents />} />
 				</Routes>
 			</div>
 			<Footer />

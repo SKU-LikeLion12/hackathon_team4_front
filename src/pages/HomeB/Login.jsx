@@ -95,6 +95,7 @@ export default function Login() {
 								type='text'
 								value={logininputs.id}
 								onChange={handleChange}
+								required
 							/>
 						</div>
 						<div className='flex flex-col items-center'>
@@ -105,6 +106,7 @@ export default function Login() {
 								type='password'
 								value={logininputs.pw}
 								onChange={handleChange}
+								required
 							/>
 						</div>
 						<div className='flex flex-col items-center'>
@@ -128,6 +130,7 @@ export default function Login() {
 								type='text'
 								value={logininputs.key}
 								onChange={handleChange}
+								required
 							/>
 						</div>
 						<div className='flex flex-col items-center'>

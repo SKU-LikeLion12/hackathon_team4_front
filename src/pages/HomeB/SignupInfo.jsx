@@ -83,7 +83,9 @@ export default function Signup_Info() {
 					</div>
 					{/* 이름/번호/보호자생년월일/email form post */}
 					<div className='flex flex-col items-start'>
-						<label className='text-[13px]'>이름</label>
+						<label htmlFor='' className='text-[13px]'>
+							이름
+						</label>
 						<input
 							name='username'
 							value={userinputs.username}
@@ -94,7 +96,7 @@ export default function Signup_Info() {
 						/>
 					</div>
 					<div className='flex flex-col items-start'>
-						<label className='text-[13px]'>
+						<label htmlFor='' className='text-[13px]'>
 							휴대전화번호
 						</label>
 						<input

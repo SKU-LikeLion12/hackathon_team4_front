@@ -6,12 +6,12 @@ export default function HealthCare() {
 	return (
 		<div className='bg-[#F0F7FF] py-[60px]'>
 			<div className='flex justify-center mb-[60px]'>
-				<div className='bg-[#208DF9] w-[700px] h-[250px] rounded-[20px]'>
+				<div className='bg-[#208DF9] w-[700px] h-[250px] rounded-[20px] drop-shadow-xl'>
 					dfsa
 				</div>
 			</div>
 			<div className='flex justify-center'>
-				<button className='HealthCareBox bg-[white] w-[300px] h-[350px] drop-shadow-xl overflow-hidden mr-[75px] pl-[20px] pr-[20px]'>
+				<button className='HealthCareBox bg-[white] w-[300px] h-[350px] drop-shadow-xl hover:bg-[#9DCCFD] hover:text-white overflow-hidden mr-[75px] pl-[20px] pr-[20px]'>
 					<div className='flex flex-col items-start justify-start'>
 						<span className='text-[#208DF9] font-bold text-[30px] mb-[3px]'>
 							운동 기록
@@ -31,8 +31,8 @@ export default function HealthCare() {
 						/>
 					</div>
 				</button>
-				<button className='HealthCareBox bg-[white] w-[300px] h-[350px] drop-shadow-xl overflow-hidden ml-[75px] pl-[20px] pr-[20px]'>
-					<div className='flex flex-col items-start justify-start'>
+				<button className='HealthCareBox bg-[white] w-[300px] h-[350px] drop-shadow-xl hover:bg-[#9DCCFD] hover:text-white overflow-hidden ml-[75px] pl-[20px] pr-[20px]'>
+					<div className='flex flex-col items-start justify-start hover:text-white'>
 						<span className='text-[#208DF9] font-bold text-[30px] mb-[3px]'>
 							약 체크하기
 						</span>

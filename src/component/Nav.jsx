@@ -59,13 +59,13 @@ export default function Nav({setPage}) {
 						<div>
 							<button
 								to='/'
-								className='bg-transparent border-[#208DF9] border-[1px] rounded-[10px] text-[#208DF9] font-medium hover:bg-[#57A9FB] hover:text-[white] hover:border-[#57A9FB] px-[18px] py-[8px] ml-[5px]'
+								className='bg-transparent border-[#1A21BD] border-[1px] rounded-[10px] text-[#1A21BD] font-medium hover:bg-[#57A9FB] hover:text-[white] hover:border-[#57A9FB] px-[18px] py-[8px] ml-[5px]'
 							>
 								모니터링
 							</button>
 							<button
 								to='/'
-								className='bg-transparent border-[#208DF9] border-[1px] rounded-[10px] text-[#208DF9] font-medium hover:bg-[#57A9FB] hover:text-[white] hover:border-[#57A9FB] px-[18px] py-[8px] ml-[5px]'
+								className='bg-transparent border-[#1A21BD] border-[1px] rounded-[10px] text-[#1A21BD] font-medium hover:bg-[#57A9FB] hover:text-[white] hover:border-[#57A9FB] px-[18px] py-[8px] ml-[5px]'
 							>
 								로그아웃
 							</button>
@@ -74,15 +74,15 @@ export default function Nav({setPage}) {
 						<div>
 							<button
 								to='/'
-								className='bg-transparent border-[#208DF9] border-[1px] rounded-[10px] text-[#208DF9] font-medium hover:bg-[#57A9FB] hover:text-[white] hover:border-[#57A9FB] px-[18px] py-[8px] ml-[5px]'
+								className='bg-transparent border-[#333333] border-[1px] rounded-[25px] text-[#333333] font-medium hover:bg-[#57A9FB] hover:text-[white] hover:border-[#57A9FB] px-[18px] py-[8px] ml-[5px]'
 							>
-								로그인
+								회원가입
 							</button>
 							<button
 								to='/'
-								className='bg-transparent border-[#208DF9] border-[1px] rounded-[10px] text-[#208DF9] font-medium hover:bg-[#57A9FB] hover:text-[white] hover:border-[#57A9FB] px-[18px] py-[8px] ml-[5px]'
+								className='bg-[#333333] border-[#333333] border-[1px] rounded-[25px] text-white font-medium hover:bg-[#57A9FB] hover:text-[white] hover:border-[#57A9FB] px-[18px] py-[8px] ml-[5px]'
 							>
-								회원가입
+								로그인
 							</button>
 						</div>
 					)}

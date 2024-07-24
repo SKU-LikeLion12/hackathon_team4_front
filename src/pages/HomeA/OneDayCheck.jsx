@@ -43,7 +43,7 @@ function OneDayCheck() {
 					></img>
 				</div>
 			</div>
-			<div className='OneDayCheckBox'>
+			<div className='OneDayCheckBox 	place-content-center'>
 				{dates.map((date) => {
 					return (
 						<OneDay

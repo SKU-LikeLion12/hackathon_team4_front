@@ -21,11 +21,17 @@ export default function SignupChild() {
 				</div>
 				<form className='' action=''>
 					<div className='flex flex-col items-start'>
-						<span className='text-[13px]'>이름</span>
+						<label
+							htmlFor='username'
+							className='text-[13px]'
+						>
+							이름
+						</label>
 						<input
 							className='w-full bg-[#f9fafb] border-[1px] border-[#c2c8cf] rounded-[10px] mt-[12px] mb-[30px] px-[16px] py-[5px]'
 							placeholder='이름'
 							type='text'
+							required
 						/>
 					</div>
 					<div className='flex flex-col items-start'>
@@ -57,10 +63,11 @@ export default function SignupChild() {
 							className='w-full bg-[#f9fafb] border-[1px] border-[#c2c8cf] rounded-[10px] mt-[12px] mb-[30px] px-[16px] py-[5px]'
 							placeholder='휴대전화번호'
 							type='text'
+							required
 						/>
 					</div>
 					<div className='flex flex-col items-start'>
-						<span className='text-[13px]'>생년월일</span>
+						<label className='text-[13px]'>생년월일</label>
 						<input
 							className='w-full bg-[#f9fafb] border-[1px] border-[#c2c8cf] rounded-[10px] mt-[12px] mb-[30px] px-[16px] py-[5px]'
 							type='date'
@@ -68,14 +75,14 @@ export default function SignupChild() {
 					</div>
 					<div className='flex flex-row items-start'>
 						<div className='flex flex-col items-start'>
-							<span className='text-[13px]'>키</span>
+							<label className='text-[13px]'>키</label>
 							<input
 								className='w-full bg-[#f9fafb] border-[1px] border-[#c2c8cf] rounded-[10px] mr-[10px] mt-[12px] mb-[30px] px-[16px] py-[5px]'
 								type='height'
 							/>
 						</div>
 						<div className='flex flex-col items-start'>
-							<span className='text-[13px]'>몸무게</span>
+							<label className='text-[13px]'>몸무게</label>
 							<input
 								className='w-full bg-[#f9fafb] border-[1px] border-[#c2c8cf] rounded-[10px] ml-[10px] mt-[12px] mb-[30px] px-[16px] py-[5px]'
 								type='text'
