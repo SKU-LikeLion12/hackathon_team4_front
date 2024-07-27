@@ -13,6 +13,8 @@ import SignupKey from "./component/HomeB/SignupKey";
 import Login from "./component/HomeB/Login";
 import HealthCare from "./component/HomeA/HealthCare";
 import Medicine from "./component/HomeA/Medicine";
+import OneDayCheck from "./component/HomeA/OneDayCheck";
+import Donut from "./component/HomeA/Donut";
 
 
 function App() {
@@ -21,7 +23,7 @@ function App() {
 	return (
 		<Router>
 			<div className='App'>
-				
+				<OneDayCheck/>
 				<Medicine/>
 				<Routes>
 					<Route path='/Signup' element={<Signup />} />

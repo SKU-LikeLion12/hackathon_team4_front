@@ -71,6 +71,6 @@ input:focus {
 	column-gap: 100px;
 	row-gap: 90px;
 	justify-content: center;
-	margin-top:20px;
-	margin-bottom: 50px;
+	align-items: center;
+	
 }
