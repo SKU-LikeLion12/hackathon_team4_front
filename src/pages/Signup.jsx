@@ -1,7 +1,8 @@
 /* eslint-disable react/jsx-pascal-case */
 import React, {useState} from "react";
-import SignupAgree from "./SignupAgree";
-import SignupInfo from "./SignupInfo";
+import SignupAgree from "../component/Signup/SignupAgree";
+import SignupInfo from "../component/Signup/SignupInfo";
+// import SignupChild from "../component/Signup/SignupChild";
 // import SignupChild from "../../component/Signup/SignupChild";
 // import SignupKey from "./../../component/Signup/SignupKey";
 
