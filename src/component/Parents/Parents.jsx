@@ -1,19 +1,13 @@
 import React, {useState} from "react";
-import ChildHealthCare from "../component/Parents/ChildHealthCare";
-import ChildMedicine from "../component/Parents/ChildMedicine";
+import ChildHealthCare from "./ChildHealthCare";
+import ChildMedicine from "./ChildMedicine";
 
 export default function Parents() {
 	const [activebtn, setActiveBtn] = useState("health");
 
 	return (
 		<div className='h-full bg-[#F0F0F0] pb-[60px]'>
-			<div className='bg-[#208DF9] w-full h-[300px]'>
-				<div>배너내용</div>
-				<button className='w-[30px] h-[30px] rounded-[100px] bg-white font-extrabold'>
-					<img src='' alt='' />
-				</button>
-			</div>
-			<div className='flex items-center justify-center my-[40px] drop-shadow-md'>
+			<div className='flex items-center justify-center py-[40px] drop-shadow-md'>
 				<button
 					id='health'
 					className={
