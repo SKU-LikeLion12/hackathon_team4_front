@@ -29,19 +29,12 @@ export default function SignupChild() {
 		try {
 			const response = await axios.post(
 				"http://localhost:8080/child/add",
-				// {
-				// 	name: "",
-				// 	gender: "",
-				// 	birthDate: "",
-				// 	height: "",
-				// 	weight: "",
-				// },
+				childinputs, // 상태값을 요청 본문에 포함
 				{
-					header: {
-						Authorization: `Bearer ${cookies.token}`,
+					headers: {
+						Authorization: `Bearer ${cookies.token}`, // 헤더에 토큰 포함
 					},
-				},
-				childinputs // 상태값을 요청  본문에 포함
+				}
 			);
 			console.log("백엔드에 잘 보냄", response.data);
 			if (response.status === 200) {
@@ -102,17 +95,14 @@ export default function SignupChild() {
 					</div>
 					<div className='flex flex-col items-start'>
 						<span className='text-[13px]'>성별</span>
-						<ul
-							className='flex flex flex-row items-start w-[50%]'
-							name='gender'
-						>
+						<ul className='flex flex flex-row items-start w-[50%]'>
 							<li>
 								<input
 									name='gender'
-									value={childinputs.gender}
+									value='male' // 남자에 대한 고정된 값 설정
+									checked={childinputs.gender === "male"} // 현재 선택된 값 확인
 									onChange={handleChange}
 									className='w-full bg-[#f9fafb] border-[1px] border-[#c2c8cf] rounded-[10px] mt-[12px] mb-[30px] px-[16px] py-[5px]'
-									key='남'
 									type='radio'
 								/>
 								<label>남자</label>
@@ -120,10 +110,10 @@ export default function SignupChild() {
 							<li>
 								<input
 									name='gender'
-									value={childinputs.gender}
+									value='female' // 여자에 대한 고정된 값 설정
+									checked={childinputs.gender === "female"} // 현재 선택된 값 확인
 									onChange={handleChange}
 									className='w-full bg-[#f9fafb] border-[1px] border-[#c2c8cf] rounded-[10px] mt-[12px] mb-[30px] px-[16px] py-[5px]'
-									key=''
 									type='radio'
 								/>
 								<label htmlFor=''>여자</label>
@@ -148,7 +138,7 @@ export default function SignupChild() {
 								value={childinputs.height}
 								onChange={handleChange}
 								className='w-full bg-[#f9fafb] border-[1px] border-[#c2c8cf] rounded-[10px] mr-[10px] mt-[12px] mb-[30px] px-[16px] py-[5px]'
-								type='height'
+								type='text' // 변경: type='height'에서 type='text'로 수정
 							/>
 						</div>
 						<div className='flex flex-col items-start'>
@@ -162,19 +152,6 @@ export default function SignupChild() {
 							/>
 						</div>
 					</div>
-					{/* <div className='flrx flex-row items-start'>
-						<div className='flex flex-col items-start'>
-							<span className='text-[13px]'>
-								복용하는 약
-							</span>
-							<input
-								value={childinputs.weight}
-								onChange={handleChange}
-								className='w-full bg-[#f9fafb] border-[1px] border-[#c2c8cf] rounded-[10px] mt-[12px] mb-[30px] px-[16px] py-[5px]'
-								type='text'
-							/>
-						</div>
-					</div> */}
 					<div className='flex '>
 						<button className='flex items-center justify-center w-full h-[45px] rounded-[10px] bg-[#208df9] text-white font-mediumm mt-[40px]'>
 							다음
