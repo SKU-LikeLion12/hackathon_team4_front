@@ -29,7 +29,7 @@ export default function SignupChild() {
 		try {
 			const response = await axios.post(
 				"http://localhost:8080/child/add",
-				childinputs, // 상태값을 요청 본문에 포함
+				{childinputs}, // 상태값을 요청 본문에 포함
 				{
 					headers: {
 						Authorization: `Bearer ${cookies.token}`, // 헤더에 토큰 포함
