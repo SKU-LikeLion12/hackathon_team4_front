@@ -38,7 +38,7 @@ export default function Signup_Info() {
 			);
 			console.log("백엔드에 잘 보냄", response.data);
 			if (response.status === 200) {
-				setCookies("token", response.data.token, {
+				setCookies("token", response.data, {
 					path: "/",
 					sameSite: "None",
 					secure: true,
