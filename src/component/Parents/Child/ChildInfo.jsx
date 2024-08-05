@@ -15,9 +15,11 @@ export default function SignupChild() {
 	});
 
 	const handleChange = (e) => {
+		console.log(e.target.value);
+		const {name, value} = e.target;
 		setInputs({
 			...childinputs,
-			[e.target.name]: e.target.value,
+			[name]: value,
 		});
 		console.log(e.target.value);
 	};
@@ -27,18 +29,19 @@ export default function SignupChild() {
 		try {
 			const response = await axios.post(
 				"http://localhost:8080/child/add",
-				{
-					name: "",
-					gender: "",
-					birthDate: "",
-					height: "",
-					weight: "",
-				},
-				{
-					header: {
-						Authorization: `Bearer ${cookies.token}`,
-					},
-				}
+				// {
+				// 	name: "",
+				// 	gender: "",
+				// 	birthDate: "",
+				// 	height: "",
+				// 	weight: "",
+				// },
+				// {
+				// 	header: {
+				// 		Authorization: `Bearer ${cookies.token}`,
+				// 	},
+				// }
+				childinputs // 상태값을 요청  본문에 포함
 			);
 			console.log("백엔드에 잘 보냄", response.data);
 			if (response.status === 200) {

@@ -1,4 +1,6 @@
 import React, {useState, useEffect} from "react";
+import {useNavigate} from "react-router-dom";
+import {useCookies} from "react-cookie";
 import MyProfile from "../Mypage/MyProfile";
 import BMIChart from "../Mypage/BMIChart";
 import Exercise from "./Exercise";
@@ -7,6 +9,8 @@ import ParentsCheck from "./ParentsCheck";
 import axios from "axios";
 
 export default function ChildHealthCare() {
+	const navigate = useNavigate();
+	const [cookies, setCookies] = useCookies(["token"]);
 	const [userData, setUserData] = useState({
 		name: "노은아",
 		gender: "",
@@ -23,9 +27,19 @@ export default function ChildHealthCare() {
 				const response = await axios.get(
 					"http://localhost:8080/parents/add"
 				);
-
 				if (response.status === 200) {
-					setUserData(response.data);
+					setCookies("token", response.data.token, {
+						path: "/",
+						sameSite: "None",
+						secure: true,
+						domain: process.env.REACT_APP_COOKIE_DOMAIN,
+					});
+					navigate("/ChildKey");
+				} else {
+					console.error(
+						"조건이 충족되지 않음",
+						response.data
+					);
 				}
 			} catch (error) {
 				console.error("오류", error);

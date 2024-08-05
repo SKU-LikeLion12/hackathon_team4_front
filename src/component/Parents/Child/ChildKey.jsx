@@ -1,4 +1,6 @@
 import React from "react";
+import {CopyToClipboard} from "react-copy-to-clipboard";
+import {FaRegCopy} from "react-icons/fa";
 
 export default function SignupKey() {
 	return (
@@ -12,7 +14,20 @@ export default function SignupKey() {
 						<b className='text-[#208DF9]'>ID FIT</b>과
 						함께하는 건강 동반자, <br />
 						username님의 고유키는 <br />
-						[고유키 복붙가능한 클립보드] 입니다 !
+						<div className='flex border-[1px] border-[#FF8540] rounded-[20px] px-[20px] py-[3px] text-[#FF8540] my-[8px] font-medium'>
+							<p>고유키 : {}</p>
+							<CopyToClipboard
+								text='djflkjslf'
+								onCopy={() =>
+									alert("고유키가 복사되었습니다.")
+								}
+							>
+								<button className='ml-[5px]'>
+									<FaRegCopy />
+								</button>
+							</CopyToClipboard>
+						</div>{" "}
+						입니다 !
 						<br />
 					</span>
 				</div>
