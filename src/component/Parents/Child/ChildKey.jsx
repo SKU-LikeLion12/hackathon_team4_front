@@ -27,7 +27,7 @@ export default function SignupKey() {
 					to='/'
 					className='w-[80%] bg-transparent border-[#208DF9] border-[1px] rounded-[10px] text-[#208DF9] font-medium hover:bg-[#57A9FB] hover:text-[white] hover:border-[#57A9FB] px-[18px] py-[8px] ml-[5px]'
 				>
-					고유키 로그인
+					보호자 페이지로 이동
 				</button>
 			</div>
 		</div>

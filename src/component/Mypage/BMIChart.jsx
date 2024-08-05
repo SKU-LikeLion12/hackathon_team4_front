@@ -23,7 +23,7 @@ ChartJS.register(
 	Legend
 );
 
-const BMIChart = () => {
+const BMIChart = ({bmi}) => {
 	const data2 = [
 		{
 			id: "temp.",
@@ -61,7 +61,6 @@ const BMIChart = () => {
 	];
 	const labels = ["저체중", "정상", "과체중", "비만"];
 	const bmiRanges = [18.5, 24.9, 29.9, 40];
-	const bmi = 30;
 	const colors = [
 		"rgba(75, 192, 192, 0.6)",
 		"rgba(75, 192, 75, 0.6)",
@@ -74,7 +73,7 @@ const BMIChart = () => {
 		datasets: [
 			{
 				label: "BMI 범위",
-				data: [20], // 최대 범위 값을 설정합니다.
+				data: [bmi], // 최대 범위 값을 설정합니다.
 				backgroundColor: [
 					"rgba(75, 192, 192, 0.2)",
 					"rgba(75, 192, 75, 0.2)",
@@ -97,9 +96,9 @@ const BMIChart = () => {
 		scales: {
 			x: {
 				beginAtZero: true,
-				max: 40, // BMI 최대 값을 40으로 설정합니다.
+				max: 40,
 				ticks: {
-					stepSize: 5,
+					stepSize: 9,
 					callback: function (value) {
 						if (value <= 18.5) return labels[0];
 						if (value <= 24.9) return labels[1];
@@ -155,9 +154,13 @@ const BMIChart = () => {
 					</div>
 				</div>
 				{/* BMI 지수 표 */}
-				<div>
+				<div className=''>
 					{/* <BarChart width={500} height={200} data={data}> */}
-					<Bar data={data} options={options} />
+					<Bar
+						style={{width: "340px", height: "300px"}}
+						data={data}
+						options={options}
+					/>
 					<ResponsiveBullet data={data2} />
 					{/* <XAxis dataKey='name' />
 						<YAxis />

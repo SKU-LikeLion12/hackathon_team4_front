@@ -6,20 +6,20 @@ const Muscle = () => {
 		<div className='flex justify-center'>
 			<div className='grid grid-cols-3 px-[200px] pt-[20px] pb-[50px]'>
 				{/* 운동1 */}
-				<div className='w-[220px] h-full bg-[#D3E7FE] py-[15px] px-[20px] mx-[80px] rounded-[8px] drop shadow-md'>
+				<div className='w-[250px] h-full bg-[#FDF3DB] py-[15px] px-[20px] mx-[80px] rounded-[8px] drop-shadow-xl'>
 					<Link
 						className=' flex flex-col bg-white px-[10px] py-[15px] rounded-[8px]'
 						to='/'
 					>
 						<div className='flex justify-center'>
 							<img
-								className='w-[130px]'
+								className='h-[130px]'
 								src='img/fit1-1.png'
 								alt=''
 							/>
 						</div>
 						<div className='flex justify-end'>
-							<div className='flex justify-center bg-[#387EFF] text-white text-[15px] font-medium rounded-[10px] px-[6px] py-[5px] mt-[8px]'>
+							<div className='flex justify-center bg-[#FDCF61] text-white text-[15px] font-medium rounded-[10px] px-[10px] py-[5px] mt-[8px]'>
 								영상보기
 							</div>
 						</div>
@@ -28,7 +28,7 @@ const Muscle = () => {
 						<div className='font-bold text-center text-[20px] my-[6px]'>
 							옆구리 스트레칭
 						</div>
-						<div className='h-[1px] w-[80%] bg-[#787474] my-[5px]'></div>
+						<div className='h-[1px] w-[80%] bg-[#FDCF61] my-[5px] '></div>
 						<div className='text-center text-[#787474]'>
 							<span>
 								한 쪽 팔씩 천천히
@@ -39,67 +39,67 @@ const Muscle = () => {
 					</div>
 				</div>
 				{/* 운동2 */}
-				<div className='w-[220px] h-full bg-[#D3E7FE] py-[15px] px-[20px] mx-[80px] rounded-[8px] drop shadow-md'>
+				<div className='w-[250px] h-full bg-[#FDF3DB] py-[15px] px-[20px] mx-[80px] rounded-[8px] drop-shadow-xl'>
 					<Link
 						className=' flex flex-col bg-white px-[10px] py-[15px] rounded-[8px]'
 						to='/'
 					>
 						<div className='flex justify-center'>
 							<img
-								className='w-[130px]'
-								src='img/fit1-1.png'
+								className='h-[130px]'
+								src='img/fit1-2.jpg'
 								alt=''
 							/>
 						</div>
 						<div className='flex justify-end'>
-							<div className='flex justify-center bg-[#387EFF] text-white text-[15px] font-medium rounded-[10px] px-[6px] py-[5px] mt-[8px]'>
+							<div className='flex justify-center bg-[#FDCF61] text-white text-[15px] font-medium rounded-[10px] px-[10px] py-[5px] mt-[8px]'>
 								영상보기
 							</div>
 						</div>
 					</Link>
 					<div className='flex flex-col items-center'>
 						<div className='font-bold text-center text-[20px] my-[6px]'>
-							옆구리 스트레칭
+							플랭크
 						</div>
-						<div className='h-[1px] w-[80%] bg-[#787474] my-[5px]'></div>
+						<div className='h-[1px] w-[80%] bg-[#FDCF61] my-[5px]'></div>
 						<div className='text-center text-[#787474]'>
 							<span>
-								한 쪽 팔씩 천천히
+								팔꿈치를 바닥에 대고
 								<br />
-								반대 방향으로 늘려줍니다.
+								몸이 일자가 되도록 유지합니다.
 							</span>
 						</div>
 					</div>
 				</div>
 				{/* 운동3 */}
-				<div className='w-[220px] h-full bg-[#D3E7FE] py-[15px] px-[20px] mx-[80px] rounded-[8px] drop shadow-md'>
+				<div className='w-[250px] h-full bg-[#FDF3DB] py-[15px] px-[20px] mx-[80px] rounded-[8px] drop-shadow-xl'>
 					<Link
 						className=' flex flex-col bg-white px-[10px] py-[15px] rounded-[8px]'
 						to='/'
 					>
 						<div className='flex justify-center'>
 							<img
-								className='w-[130px]'
-								src='img/fit1-1.png'
+								className='h-[130px]'
+								src='img/fit1-3.png'
 								alt=''
 							/>
 						</div>
 						<div className='flex justify-end'>
-							<div className='flex justify-center bg-[#387EFF] text-white text-[15px] font-medium rounded-[10px] px-[6px] py-[5px] mt-[8px]'>
+							<div className='flex justify-center bg-[#FDCF61] text-white text-[15px] font-medium rounded-[10px] px-[10px] py-[5px] mt-[8px]'>
 								영상보기
 							</div>
 						</div>
 					</Link>
 					<div className='flex flex-col items-center'>
 						<div className='font-bold text-center text-[20px] my-[6px]'>
-							옆구리 스트레칭
+							제자리 뛰기
 						</div>
-						<div className='h-[1px] w-[80%] bg-[#787474] my-[5px]'></div>
+						<div className='h-[1px] w-[80%] bg-[#FDCF61] my-[5px]'></div>
 						<div className='text-center text-[#787474]'>
 							<span>
-								한 쪽 팔씩 천천히
+								제자리에서 자신의
 								<br />
-								반대 방향으로 늘려줍니다.
+								컨디션에 맞춰서 뜁니다.
 							</span>
 						</div>
 					</div>

@@ -1,6 +1,66 @@
-import React from "react";
+import React, {useState} from "react";
+import {useNavigate} from "react-router-dom";
+import {useCookies} from "react-cookie";
+import axios from "axios";
 
 export default function SignupChild() {
+	const navigate = useNavigate();
+	const [cookies, setCookies] = useCookies(["token"]);
+	const [childinputs, setInputs] = useState({
+		name: "",
+		gender: "",
+		birthDate: "",
+		height: "",
+		weight: "",
+	});
+
+	const handleChange = (e) => {
+		setInputs({
+			...childinputs,
+			[e.target.name]: e.target.value,
+		});
+		console.log(e.target.value);
+	};
+
+	const loginSubmit = async (e) => {
+		e.preventDefault(); // 폼의 기본 동작을 막음
+		try {
+			const response = await axios.post(
+				"http://localhost:8080/child/add",
+				{
+					name: "",
+					gender: "",
+					birthDate: "",
+					height: "",
+					weight: "",
+				},
+				{
+					header: {
+						Authorization: `Bearer ${cookies.token}`,
+					},
+				}
+			);
+			console.log("백엔드에 잘 보냄", response.data);
+			if (response.status === 200) {
+				setCookies("token", response.data.token, {
+					path: "/",
+					sameSite: "None",
+					secure: true,
+					domain: process.env.REACT_APP_COOKIE_DOMAIN,
+				});
+				navigate("/ChildKey");
+			} else {
+				console.error(
+					"조건이 충족되지 않음",
+					response.data
+				);
+			}
+		} catch (error) {
+			console.error("오류", error);
+			console.log("실패");
+		}
+	};
+
 	return (
 		<div className='Mobile pt-[40px] pb-[20px]'>
 			<div className='flex justify-center text-[25px] text-[#208DF9] font-bold'>
@@ -19,7 +79,7 @@ export default function SignupChild() {
 						사용되며, 개인정보는 안전하게 보호됩니다.
 					</span>
 				</div>
-				<form className='' action=''>
+				<form onSubmit={loginSubmit}>
 					<div className='flex flex-col items-start'>
 						<label
 							htmlFor='username'
@@ -28,6 +88,8 @@ export default function SignupChild() {
 							이름
 						</label>
 						<input
+							name='name'
+							value={childinputs.name}
 							className='w-full bg-[#f9fafb] border-[1px] border-[#c2c8cf] rounded-[10px] mt-[12px] mb-[30px] px-[16px] py-[5px]'
 							placeholder='이름'
 							type='text'
@@ -42,33 +104,30 @@ export default function SignupChild() {
 						>
 							<li>
 								<input
+									name='gender'
+									value={childinputs.gender}
 									className='w-full bg-[#f9fafb] border-[1px] border-[#c2c8cf] rounded-[10px] mt-[12px] mb-[30px] px-[16px] py-[5px]'
 									key='남'
-									value='남자'
 									type='radio'
 								/>
 								<label>남자</label>
 							</li>
 							<li>
 								<input
+									name='gender'
+									value={childinputs.gender}
 									className='w-full bg-[#f9fafb] border-[1px] border-[#c2c8cf] rounded-[10px] mt-[12px] mb-[30px] px-[16px] py-[5px]'
 									key=''
-									value='여자'
 									type='radio'
 								/>
 								<label htmlFor=''>여자</label>
 							</li>
 						</ul>
-						<input
-							className='w-full bg-[#f9fafb] border-[1px] border-[#c2c8cf] rounded-[10px] mt-[12px] mb-[30px] px-[16px] py-[5px]'
-							placeholder='휴대전화번호'
-							type='text'
-							required
-						/>
 					</div>
 					<div className='flex flex-col items-start'>
 						<label className='text-[13px]'>생년월일</label>
 						<input
+							name='birthDate'
 							className='w-full bg-[#f9fafb] border-[1px] border-[#c2c8cf] rounded-[10px] mt-[12px] mb-[30px] px-[16px] py-[5px]'
 							type='date'
 						/>
@@ -77,6 +136,7 @@ export default function SignupChild() {
 						<div className='flex flex-col items-start'>
 							<label className='text-[13px]'>키</label>
 							<input
+								name='height'
 								className='w-full bg-[#f9fafb] border-[1px] border-[#c2c8cf] rounded-[10px] mr-[10px] mt-[12px] mb-[30px] px-[16px] py-[5px]'
 								type='height'
 							/>
@@ -84,6 +144,7 @@ export default function SignupChild() {
 						<div className='flex flex-col items-start'>
 							<label className='text-[13px]'>몸무게</label>
 							<input
+								name='weight'
 								className='w-full bg-[#f9fafb] border-[1px] border-[#c2c8cf] rounded-[10px] ml-[10px] mt-[12px] mb-[30px] px-[16px] py-[5px]'
 								type='text'
 							/>

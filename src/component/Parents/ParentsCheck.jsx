@@ -4,12 +4,12 @@ import {GrFormNext} from "react-icons/gr";
 
 const ParentsCheck = () => {
 	return (
-		<>
+		<div className='bg-white'>
 			<div className='w-[70%] flex justify-between items-center bg-[#E9F4FD] border-[2px] border-[#ABD8F7] rounded-[10px] drop-shadow-md px-[50px] py-[30px] mb-[10px]'>
 				<button>
 					<GrFormPrevious size={50} />
 				</button>
-				<div className='flex flex-col items-center'>
+				<div className='flex flex-col items-center font-bold'>
 					<div className='fontBold text-[25px]'>
 						님의 월 일 하루 건강 체크
 					</div>
@@ -94,7 +94,7 @@ const ParentsCheck = () => {
 					</div>
 				</div>
 			</div>
-		</>
+		</div>
 	);
 };
 

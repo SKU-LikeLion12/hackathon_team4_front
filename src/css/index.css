@@ -13,6 +13,14 @@ body {
 	display: none;
 }
 
+.Mobile {
+	max-width: 500px;
+	min-height: 100vh;
+	margin-left: auto;
+	margin-right: auto;
+	overflow-x: hidden;
+}
+
 /*font 클래스명
 tailwind : weight : 속성
 font-thin , 100 , thin
@@ -32,14 +40,6 @@ https://fonts.google.com/noto/specimen/Noto+Sans+KR?query=korea
 	font-style: normal;
 }
 
-.Mobile {
-	max-width: 500px;
-	min-height: 100vh;
-	margin-left: auto;
-	margin-right: auto;
-	overflow-x: hidden;
-}
-
 /*Titlefont*/
 @font-face {
 	font-family: "RixInooAriDuriR";
@@ -56,8 +56,32 @@ https://fonts.google.com/noto/specimen/Noto+Sans+KR?query=korea
 	font-style: normal;
 }
 
+/*지마켓*/
+@font-face {
+	font-family: "GmarketSansMedium";
+	src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff")
+		format("woff");
+	font-weight: normal;
+	font-style: normal;
+}
+
 .title {
 	font-family: "BMJUA", sans-serif;
+}
+
+.gb {
+	font-family: "GmarketSansMedium", sans-serif;
+	font-weight: 700;
+}
+
+.gm {
+	font-family: "GmarketSansMedium", sans-serif;
+	font-weight: 500;
+}
+
+.gl {
+	font-family: "GmarketSansMedium", sans-serif;
+	font-weight: 300;
 }
 
 input:focus {
@@ -92,30 +116,15 @@ input:focus {
 	align-items: center;
 }
 
-.fontBold {
-	font-weight: bold;
+.HealthCareBox {
+	border-radius: 20px 50px 20px 20px;
 }
 
-.OBtn {
-	background-color: #2349dc;
-}
-
-.OBtn:hover {
-	filter: drop-shadow(0px 0px 5px #2349dc);
-}
-
-.OBtn:focus {
-	filter: drop-shadow(0px 0px 5px #2349dc);
-}
-
-.XBtn {
-	background-color: #ff5b00;
-}
-
-.XBtn:hover {
-	filter: drop-shadow(0px 0px 5px #ff5b00);
-}
-
-.XBtn:focus {
-	filter: drop-shadow(0px 0px 5px #ff5b00);
+.OneDayCheckBox {
+	display: grid;
+	grid-template-columns: 400px 400px;
+	column-gap: 100px;
+	row-gap: 90px;
+	justify-content: center;
+	align-items: center;
 }

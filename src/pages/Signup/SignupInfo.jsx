@@ -1,44 +1,60 @@
 import React, {useState} from "react";
 import {useNavigate} from "react-router-dom";
+import {useCookies} from "react-cookie";
 import axios from "axios";
-import SignupChild from "./SignupChild";
 
 export default function Signup_Info() {
 	const navigate = useNavigate();
+	const [, setCookies] = useCookies(["token"]);
+
 	const [userinputs, setInputs] = useState({
-		id: "",
-		pw: "",
-		username: "",
-		phone: "",
+		user_id: "",
+		password: "",
+		nickname: "",
+		phone_number: "",
 		email: "",
 	});
 
 	const handleChange = (e) => {
-		setInputs({
-			...userinputs,
-			[e.target.name]: e.target.value,
-		});
-		console.log(e.target.value);
+		const {name, value} = e.target;
+		setInputs((prevInputs) => ({
+			...prevInputs,
+			[name]: value,
+		}));
 	};
 
-	const handleSubmit = async (e) => {
+	const onSubmit = async (e) => {
 		e.preventDefault(); // 폼의 기본 동작을 막음
 		try {
-			const response = await axios.post("", {
-				id: "",
-				pw: "",
-				username: "",
-				phone: "",
-				email: "",
-			});
+			const response = await axios.post(
+				"http://13.209.29.41:8080/parents/add",
+				// {
+				// 	header: {
+				// 		Authorization: `Bearer ${cookies.token}`,
+				// 	},
+				// },
+				userinputs // 상태값을 요청 본문에 포함
+			);
 			console.log("백엔드에 잘 보냄", response.data);
-			// 백엔드에 잘 보내졌으면 실행되는 코드
-			if (response.data.length > 0) {
-				navigate(<SignupChild />); // 요청이 성공하면 페이지 이동
+			if (response.status === 200) {
+				setCookies("token", response.data.token, {
+					path: "/",
+					sameSite: "None",
+					secure: true,
+					domain: process.env.REACT_APP_COOKIE_DOMAIN,
+				});
+				console.log(
+					"조건이 충족되어 ChildInfo로 이동합니다."
+				); // 상태가 성공적으로 업데이트 되었는지 확인
+				navigate("/ChildInfo");
+			} else {
+				console.error(
+					"조건이 충족되지 않음",
+					response.data
+				);
 			}
 		} catch (error) {
-			console.error("오류", error);
-			console.log("실패");
+			console.log(error);
 		}
 	};
 
@@ -57,55 +73,57 @@ export default function Signup_Info() {
 						모두 정확하게 입력해 주세요.
 					</span>
 				</div>
-				<form onSubmit={handleSubmit} method='post'>
+				<form onSubmit={onSubmit}>
 					{/* id/pw 정보확인 */}
 					<div className='flex flex-col items-start'>
-						<label className='text-[13px]'>아아디</label>
+						<label className='text-[13px]'>아이디</label>
 						<input
-							name='id'
-							value={userinputs.id}
+							name='user_id'
+							value={userinputs.user_id}
 							onChange={handleChange}
 							className='input w-full bg-[#f9fafb] border-[1px] border-[#c2c8cf] rounded-[10px] mt-[12px] mb-[30px] px-[16px] py-[5px]'
 							placeholder='아이디'
 							type='text'
+							required
 						/>
 					</div>
 					<div className='flex flex-col items-start'>
 						<label className='text-[13px]'>비밀번호</label>
 						<input
-							name='pw'
-							value={userinputs.pw}
+							name='password'
+							value={userinputs.password}
 							onChange={handleChange}
 							className='w-full bg-[#f9fafb] border-[1px] border-[#c2c8cf] rounded-[10px] mt-[12px] mb-[30px] px-[16px] py-[5px]'
 							placeholder='비밀번호'
-							type='text'
+							type='password'
+							required
 						/>
 					</div>
 					{/* 이름/번호/보호자생년월일/email form post */}
 					<div className='flex flex-col items-start'>
-						<label htmlFor='' className='text-[13px]'>
-							이름
-						</label>
+						<label className='text-[13px]'>이름</label>
 						<input
-							name='username'
-							value={userinputs.username}
+							name='nickname'
+							value={userinputs.nickname}
 							onChange={handleChange}
 							className='w-full bg-[#f9fafb] border-[1px] border-[#c2c8cf] rounded-[10px] mt-[12px] mb-[30px] px-[16px] py-[5px]'
 							placeholder='이름'
 							type='text'
+							required
 						/>
 					</div>
 					<div className='flex flex-col items-start'>
-						<label htmlFor='' className='text-[13px]'>
+						<label className='text-[13px]'>
 							휴대전화번호
 						</label>
 						<input
-							name='phone'
-							value={userinputs.phone}
+							name='phone_number'
+							value={userinputs.phone_number}
 							onChange={handleChange}
 							className='w-full bg-[#f9fafb] border-[1px] border-[#c2c8cf] rounded-[10px] mt-[12px] mb-[30px] px-[16px] py-[5px]'
 							placeholder='휴대전화번호'
 							type='text'
+							required
 						/>
 					</div>
 					<div className='flex flex-col items-start'>
@@ -116,14 +134,12 @@ export default function Signup_Info() {
 							onChange={handleChange}
 							className='w-full bg-[#f9fafb] border-[1px] border-[#c2c8cf] rounded-[10px] mt-[12px] mb-[30px] px-[16px] py-[5px]'
 							placeholder='이메일'
-							type='text'
+							type='email'
+							required
 						/>
 					</div>
 					<div className=''>
-						<button
-							to='/SignupChild'
-							className='flex items-center justify-center w-full h-[45px] rounded-[10px] bg-[#208df9] text-white font-mediumm mt-[40px]'
-						>
+						<button className='flex items-center justify-center w-full h-[45px] rounded-[10px] bg-[#208df9] text-white font-mediumm mt-[40px]'>
 							다음
 						</button>
 					</div>

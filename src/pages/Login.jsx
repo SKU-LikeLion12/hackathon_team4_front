@@ -1,10 +1,13 @@
 import React, {useState} from "react";
 import {useNavigate} from "react-router-dom";
-
+import {useCookies} from "react-cookie";
 import axios from "axios";
 
 export default function Login() {
 	const navigate = useNavigate();
+	const [, setCookies] = useCookies(["token"]);
+	const [userid, setUserid] = useState("");
+
 	const [logininputs, setLogInputs] = useState({
 		id: "",
 		pw: "",
@@ -23,21 +26,40 @@ export default function Login() {
 		e.preventDefault(); // 폼의 기본 동작을 막음
 		try {
 			const response = await axios.post(
-				"http://34.47.99.4:3306/api/login",
+				"http://localhost:8080/parents/login",
 				{
-					id: "",
-					pw: "",
+					user_id: "",
+					password: "",
 					key: "",
 				}
 			);
 			console.log("백엔드에 잘 보냄", response.data);
 			// 백엔드에 잘 보내졌으면 실행되는 코드
-			if (response.status === 200) {
-				alert("로그인이 완료되었습니다!");
+			// 	if (response.status === 200) {
+			// 		alert("로그인이 완료되었습니다!");
+			// 	}
+			// } catch (error) {
+			// 	console.error("오류", error);
+			// 	console.log("실패");
+			// }
+			if (response.data.token) {
+				setCookies("token", response.data.token, {
+					path: "/",
+					sameSite: "None",
+					secure: true,
+					domain: process.env.REACT_APP_COOKIE_DOMAIN,
+				});
+				localStorage.setItem("token", response.data.token);
+				navigate("/");
+			} else {
+				console.error(
+					"조건이 충족되지 않음",
+					response.data
+				);
 			}
 		} catch (error) {
 			console.error("오류", error);
-			console.log("실패");
+			alert("전송실패");
 		}
 	};
 
@@ -54,7 +76,7 @@ export default function Login() {
 					</span>
 					<span className='text-[15px] mt-[25px] mb-[50px]'>
 						※<b className='text-[#208DF9]'>보호자 로그인</b>
-						은 모니터링을 할 수 있는 계정이며
+						은 모니터링을 할 수 있는 계정이며&nbsp;
 						<b className='text-[#208DF9]'>고유키 로그인</b>
 						은 운동추천 및 건강관리 서비스를 이용하실 수
 						있습니다.

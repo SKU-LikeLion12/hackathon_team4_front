@@ -19,7 +19,7 @@ export default function Signup_Agree({setState}) {
 	const checkList = () => {
 		const check = agreements.every((item) => item === true);
 		if (check) {
-			setState(2);
+			navigation("/SignupInfo");
 		}
 	};
 
