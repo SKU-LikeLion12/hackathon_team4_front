@@ -36,11 +36,11 @@ export default function SignupChild() {
 				// 	height: "",
 				// 	weight: "",
 				// },
-				// {
-				// 	header: {
-				// 		Authorization: `Bearer ${cookies.token}`,
-				// 	},
-				// }
+				{
+					header: {
+						Authorization: `Bearer ${cookies.token}`,
+					},
+				},
 				childinputs // 상태값을 요청  본문에 포함
 			);
 			console.log("백엔드에 잘 보냄", response.data);
