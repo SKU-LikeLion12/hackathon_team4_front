@@ -16,6 +16,7 @@ export default function Signup_Info() {
 	});
 
 	const handleChange = (e) => {
+		console.log(e.target.value);
 		const {name, value} = e.target;
 		setInputs((prevInputs) => ({
 			...prevInputs,

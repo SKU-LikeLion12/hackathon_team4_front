@@ -90,6 +90,7 @@ export default function SignupChild() {
 						<input
 							name='name'
 							value={childinputs.name}
+							onChange={handleChange}
 							className='w-full bg-[#f9fafb] border-[1px] border-[#c2c8cf] rounded-[10px] mt-[12px] mb-[30px] px-[16px] py-[5px]'
 							placeholder='이름'
 							type='text'
@@ -106,6 +107,7 @@ export default function SignupChild() {
 								<input
 									name='gender'
 									value={childinputs.gender}
+									onChange={handleChange}
 									className='w-full bg-[#f9fafb] border-[1px] border-[#c2c8cf] rounded-[10px] mt-[12px] mb-[30px] px-[16px] py-[5px]'
 									key='남'
 									type='radio'
@@ -116,6 +118,7 @@ export default function SignupChild() {
 								<input
 									name='gender'
 									value={childinputs.gender}
+									onChange={handleChange}
 									className='w-full bg-[#f9fafb] border-[1px] border-[#c2c8cf] rounded-[10px] mt-[12px] mb-[30px] px-[16px] py-[5px]'
 									key=''
 									type='radio'
@@ -128,6 +131,8 @@ export default function SignupChild() {
 						<label className='text-[13px]'>생년월일</label>
 						<input
 							name='birthDate'
+							value={childinputs.birthDate}
+							onChange={handleChange}
 							className='w-full bg-[#f9fafb] border-[1px] border-[#c2c8cf] rounded-[10px] mt-[12px] mb-[30px] px-[16px] py-[5px]'
 							type='date'
 						/>
@@ -137,6 +142,8 @@ export default function SignupChild() {
 							<label className='text-[13px]'>키</label>
 							<input
 								name='height'
+								value={childinputs.height}
+								onChange={handleChange}
 								className='w-full bg-[#f9fafb] border-[1px] border-[#c2c8cf] rounded-[10px] mr-[10px] mt-[12px] mb-[30px] px-[16px] py-[5px]'
 								type='height'
 							/>
@@ -145,22 +152,26 @@ export default function SignupChild() {
 							<label className='text-[13px]'>몸무게</label>
 							<input
 								name='weight'
+								value={childinputs.weight}
+								onChange={handleChange}
 								className='w-full bg-[#f9fafb] border-[1px] border-[#c2c8cf] rounded-[10px] ml-[10px] mt-[12px] mb-[30px] px-[16px] py-[5px]'
 								type='text'
 							/>
 						</div>
 					</div>
-					<div className='flrx flex-row items-start'>
+					{/* <div className='flrx flex-row items-start'>
 						<div className='flex flex-col items-start'>
 							<span className='text-[13px]'>
 								복용하는 약
 							</span>
 							<input
+								value={childinputs.weight}
+								onChange={handleChange}
 								className='w-full bg-[#f9fafb] border-[1px] border-[#c2c8cf] rounded-[10px] mt-[12px] mb-[30px] px-[16px] py-[5px]'
 								type='text'
 							/>
 						</div>
-					</div>
+					</div> */}
 					<div className='flex '>
 						<button className='flex items-center justify-center w-full h-[45px] rounded-[10px] bg-[#208df9] text-white font-mediumm mt-[40px]'>
 							다음
