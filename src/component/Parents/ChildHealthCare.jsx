@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from "react";
 import {useNavigate} from "react-router-dom";
-import {useCookies} from "react-cookie";
-import MyProfile from "../Mypage/MyProfile";
+import MyProfile from "./ParentsProfile";
 import BMIChart from "../Mypage/BMIChart";
 import Exercise from "./Exercise";
 import Banner from "./Banner";
@@ -10,43 +9,39 @@ import axios from "axios";
 
 export default function ChildHealthCare() {
 	const navigate = useNavigate();
-	const [cookies, setCookies] = useCookies(["token"]);
-	const [userData, setUserData] = useState({
-		name: "노은아",
-		gender: "",
-		age: "",
-		id: 0,
-		bmi: 33,
+	const Ltoken = localStorage.getItem("token");
+
+	const [users, setUsers] = useState({
+		name: "",
 	});
-	const {bmi} = userData;
 
-	// 데이터 로드를 위한 useEffect
-	useEffect(() => {
-		const fetchData = async () => {
-			try {
-				const response = await axios.get(
-					"http://localhost:8080/parents/add"
-				);
-				if (response.status === 200) {
-					setCookies("token", response.data.token, {
-						path: "/",
-						sameSite: "None",
-						secure: true,
-						domain: process.env.REACT_APP_COOKIE_DOMAIN,
-					});
-					navigate("/ChildKey");
-				} else {
-					console.error(
-						"조건이 충족되지 않음",
-						response.data
-					);
+	const fetchData = async () => {
+		try {
+			const response = await axios.get(
+				`${process.env.REACT_APP_SERVER_URL}/parents/child`,
+				{
+					headers: {
+						Authorization: `Bearer ${Ltoken}`,
+					},
 				}
-			} catch (error) {
-				console.error("오류", error);
-				console.log("실패");
+			);
+			if (response.status === 200) {
+				// 데이터 상태 업데이트
+				setUsers(response.data);
+				console.log("data get: ", response);
+			} else {
+				console.error(
+					"조건이 충족되지 않음",
+					response.data
+				);
 			}
-		};
+		} catch (error) {
+			console.error("오류", error);
+			console.log("실패");
+		}
+	};
 
+	useEffect(() => {
 		fetchData();
 	}, []);
 
@@ -54,11 +49,11 @@ export default function ChildHealthCare() {
 		<div className='h-full'>
 			<div className='w-full bg-[#208DF9] h-[250px] flex flex-col items-center justify-center text-white'>
 				<span className='text-[25px] mb-[20px] font-bold'>
-					사자님의 건강 정보를 <br />
+					{users.name}님의 건강 정보를 <br />
 					한눈에 볼 수 있어요!
 				</span>
 				<span>
-					사자님의 개인정보는 마이페이지에서 수정
+					{users.name}님의 개인정보는 마이페이지에서 수정
 					가능합니다.
 				</span>
 				<span className='underline underline-offset-1'>
@@ -70,10 +65,10 @@ export default function ChildHealthCare() {
 					{/* 왼쪽 */}
 					<div className='grid grid-rows-2 pr-[100px]'>
 						<div>
-							<MyProfile userData={userData} />
+							<MyProfile />
 						</div>
 						<div>
-							<BMIChart bmi={bmi} />
+							<BMIChart />
 						</div>
 					</div>
 					{/* 오른쪽 */}

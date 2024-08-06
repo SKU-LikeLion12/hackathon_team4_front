@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import {Bar} from "react-chartjs-2";
 import {
 	Chart as ChartJS,
@@ -12,6 +12,7 @@ import {
 import "chartjs-plugin-annotation";
 
 import {ResponsiveBullet} from "@nivo/bullet";
+import axios from "axios";
 
 // Chart.js의 구성 요소를 등록합니다.
 ChartJS.register(
@@ -23,7 +24,42 @@ ChartJS.register(
 	Legend
 );
 
-const BMIChart = ({bmi}) => {
+const BMIChart = () => {
+	const Ltoken = localStorage.getItem("token");
+	const [bmis, setBmis] = useState({
+		bmi: "",
+	});
+
+	const fetchData = async () => {
+		try {
+			const response = await axios.get(
+				`${process.env.REACT_APP_SERVER_URL}/parents/child`,
+				{
+					headers: {
+						Authorization: `Bearer ${Ltoken}`,
+					},
+				}
+			);
+			if (response.status === 200) {
+				// 데이터 상태 업데이트
+				setBmis(response.data);
+				console.log("data get: ", response);
+			} else {
+				console.error(
+					"조건이 충족되지 않음",
+					response.data
+				);
+			}
+		} catch (error) {
+			console.error("오류", error);
+			console.log("실패");
+		}
+	};
+
+	useEffect(() => {
+		fetchData();
+	}, []);
+
 	const data2 = [
 		{
 			id: "temp.",
@@ -73,7 +109,7 @@ const BMIChart = ({bmi}) => {
 		datasets: [
 			{
 				label: "BMI 범위",
-				data: [bmi], // 최대 범위 값을 설정합니다.
+				data: [`${bmis.bmi}`], // 최대 범위 값을 설정합니다.
 				backgroundColor: [
 					"rgba(75, 192, 192, 0.2)",
 					"rgba(75, 192, 75, 0.2)",
@@ -148,16 +184,14 @@ const BMIChart = ({bmi}) => {
 			<div className='flex flex-col items-center bg-[white] py-[30px] px-[10px] rounded-[10px] overflow-hidden drop-shadow-md'>
 				{/* BMI 지수 제목 */}
 				<div className='flex justify-center text-[23px] font-extrabold'>
-					<div>BMI : {bmi}</div>
-					<div className='ml-[10px] text-[#FF8540]'>
-						(비만)
-					</div>
+					<div>BMI : {bmis.bmi}</div>
+					<div className='ml-[10px] text-[#FF8540]'></div>
 				</div>
 				{/* BMI 지수 표 */}
 				<div className=''>
 					{/* <BarChart width={500} height={200} data={data}> */}
 					<Bar
-						style={{width: "340px", height: "300px"}}
+						style={{width: "400px", height: "300px"}}
 						data={data}
 						options={options}
 					/>

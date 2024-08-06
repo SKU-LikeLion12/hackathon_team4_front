@@ -15,22 +15,29 @@ export default function SignupChild() {
 		weight: "",
 	});
 
+	const {name, gender, birthDate, height, weight} =
+		childinputs;
+
 	const handleChange = (e) => {
-		console.log(e.target.value);
 		const {name, value} = e.target;
 		setInputs({
 			...childinputs,
 			[name]: value,
 		});
-		console.log(e.target.value);
 	};
 
-	const loginSubmit = async (e) => {
+	const childInfosubmit = async (e) => {
 		e.preventDefault(); // 폼의 기본 동작을 막음
 		try {
 			const response = await axios.post(
-				"http://localhost:8080/child/add",
-				childinputs, // 상태값을 요청 본문에 포함
+				`${process.env.REACT_APP_SERVER_URL}/child/add`,
+				{
+					name,
+					gender,
+					birthDate,
+					height,
+					weight,
+				},
 				{
 					headers: {
 						Authorization: `Bearer ${Ltoken}`, // 헤더에 토큰 포함
@@ -39,12 +46,10 @@ export default function SignupChild() {
 			);
 			console.log("백엔드에 잘 보냄", response.data);
 			if (response.status === 200) {
-				setCookies("token", response.data.token, {
-					path: "/",
-					sameSite: "None",
-					secure: true,
-					domain: process.env.REACT_APP_COOKIE_DOMAIN,
-				});
+				localStorage.setItem(
+					"uniqueKey",
+					response.data.uniqueKey
+				);
 				navigate("/ChildKey");
 			} else {
 				console.error(
@@ -76,7 +81,7 @@ export default function SignupChild() {
 						사용되며, 개인정보는 안전하게 보호됩니다.
 					</span>
 				</div>
-				<form onSubmit={loginSubmit}>
+				<form onSubmit={childInfosubmit}>
 					<div className='flex flex-col items-start'>
 						<label
 							htmlFor='username'
@@ -97,7 +102,7 @@ export default function SignupChild() {
 					<div className='flex flex-col items-start'>
 						<span className='text-[13px]'>성별</span>
 						<ul className='flex flex flex-row items-start w-[50%]'>
-							<li>
+							<li className='flex'>
 								<input
 									name='gender'
 									value='male' // 남자에 대한 고정된 값 설정
@@ -108,7 +113,7 @@ export default function SignupChild() {
 								/>
 								<label>남자</label>
 							</li>
-							<li>
+							<li className='flex'>
 								<input
 									name='gender'
 									value='female' // 여자에 대한 고정된 값 설정
@@ -139,7 +144,7 @@ export default function SignupChild() {
 								value={childinputs.height}
 								onChange={handleChange}
 								className='w-full bg-[#f9fafb] border-[1px] border-[#c2c8cf] rounded-[10px] mr-[10px] mt-[12px] mb-[30px] px-[16px] py-[5px]'
-								type='text' // 변경: type='height'에서 type='text'로 수정
+								type='text'
 							/>
 						</div>
 						<div className='flex flex-col items-start'>

@@ -28,7 +28,7 @@ export default function Signup_Info() {
 		e.preventDefault(); // 폼의 기본 동작을 막음
 		try {
 			const response = await axios.post(
-				"http://13.209.29.41:8080/parents/add",
+				`${process.env.REACT_APP_SERVER_URL}/parents/add`,
 				// {
 				// 	header: {
 				// 		Authorization: `Bearer ${cookies.token}`,
@@ -36,17 +36,13 @@ export default function Signup_Info() {
 				// },
 				userinputs // 상태값을 요청 본문에 포함
 			);
-			console.log("백엔드에 잘 보냄", response.data);
+			console.log("백엔드에 잘 보냄", response);
 			if (response.status === 200) {
-				setCookies("token", response.data, {
-					path: "/",
-					sameSite: "None",
-					secure: true,
-					domain: process.env.REACT_APP_COOKIE_DOMAIN,
-				});
 				console.log(
 					"조건이 충족되어 ChildInfo로 이동합니다."
 				); // 상태가 성공적으로 업데이트 되었는지 확인
+
+				localStorage.setItem("token", response.data); //연결하면 response.data.token로
 				navigate("/ChildInfo");
 			} else {
 				console.error(

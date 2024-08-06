@@ -1,106 +1,216 @@
 import React, {useState, useEffect} from "react";
-import OneDay from "./OneDay";
 import axios from "axios";
 
 function OneDayCheck() {
-	const [selectedButtons, setSelectedButtons] = useState(
-		{}
-	);
-	const [isSubmitEnabled, setIsSubmitEnabled] =
-		useState(false); // 버튼 상태 값 판단
+	const Ltoken = localStorage.getItem("token");
 
-	const handleButtonClick = (count, value) => {
+	const [users, setUsers] = useState({
+		name: "",
+	});
+
+	const fetchData = async () => {
+		try {
+			const response = await axios.get(
+				`${process.env.REACT_APP_SERVER_URL}/parents/child`,
+				{
+					headers: {
+						Authorization: `Bearer ${Ltoken}`,
+					},
+				}
+			);
+			if (response.status === 200) {
+				// 데이터 상태 업데이트
+				setUsers(response.data);
+				console.log("data get: ", response);
+			} else {
+				console.error(
+					"조건이 충족되지 않음",
+					response.data
+				);
+			}
+		} catch (error) {
+			console.error("오류", error);
+			console.log("실패");
+		}
+	};
+
+	const [selectedButtons, setSelectedButtons] = useState({
+		niceSleepDay: null,
+		hardWorkout: null,
+		takingMedicine: null,
+		niceDailyMood: null,
+	});
+	const [isSubmitEnabled, setIsSubmitEnabled] =
+		useState(false);
+
+	const handleButtonClick = (key, value) => {
 		setSelectedButtons((prev) => ({
 			...prev,
-			[count]: value,
+			[key]: value,
 		}));
 	};
 
-	// 백으로 보내는 부분
 	const handleSubmit = async () => {
+		const today = new Date().toISOString().split("T")[0];
+		const dataToSend = {
+			checkedDay: today,
+			niceSleepDay: selectedButtons.niceSleepDay,
+			hardWorkout: selectedButtons.hardWorkout,
+			takingMedicine: selectedButtons.takingMedicine,
+			niceDailyMood: selectedButtons.niceDailyMood,
+		};
+
 		try {
-			const response = await axios.post("url", {
-				selectedButtons,
-			});
+			const response = await axios.post(
+				`${process.env.REACT_APP_SERVER_URL}/dailycheck/add`,
+				dataToSend,
+				{
+					headers: {
+						Authorization: `Bearer ${Ltoken}`, // 헤더에 토큰 포함
+					},
+				}
+			);
 			console.log("Response:", response.data);
-			// 제출완료된 후 상태 초기화
-			setSelectedButtons({});
+			// 상태 초기화
+			setSelectedButtons({
+				niceSleepDay: null,
+				hardWorkout: null,
+				takingMedicine: null,
+				niceDailyMood: null,
+			});
+			setIsSubmitEnabled(false);
 		} catch (error) {
 			console.error("Error submitting data:", error);
 		}
 	};
 
 	useEffect(() => {
-		// 모든 질문에 응답이 있는지 CK
-		const allAnswered = ["1", "2", "3", "4"].every(
-			(key) => selectedButtons[key]
+		const allAnswered = Object.keys(selectedButtons).every(
+			(key) => selectedButtons[key] !== null
 		);
 		setIsSubmitEnabled(allAnswered);
 	}, [selectedButtons]);
 
-	const dates = [
+	useEffect(() => {
+		fetchData();
+	}, []);
+
+	const questions = [
 		{
-			count: "1",
+			key: "niceSleepDay",
+			count: 1,
 			img: "img/sleep.png",
 			qs: "충분한 수면을 취했나요?",
 		},
-
 		{
-			count: "2",
+			key: "hardWorkout",
+			count: 2,
 			img: "img/sick.png",
 			qs: "특별하게 아픈 곳은 없었나요?",
 		},
-
 		{
-			count: "3",
+			key: "takingMedicine",
+			count: 3,
 			img: "img/exercise1.png",
 			qs: "활동적으로 움직였나요?",
 		},
 		{
-			count: "4",
+			key: "niceDailyMood",
+			count: 4,
 			img: "img/happy.png",
-			qs: " 오늘 하루 행복한가요?",
+			qs: "오늘 하루 행복한가요?",
 		},
 	];
 
-	// 렌더링 되는 부분
 	return (
-		<div className='bg-[#f0f7ff] py-[60px] '>
-			<div className='text flex items-center justify-center'>
-				<div className='text-5xl font-extrabold'>
-					<p>사자님의 건강상태를</p>
+		<div className='flex flex-col items-center bg-[#f0f7ff] py-[60px] px-[60px]'>
+			<div className='text flex items-center justify-center bg-[#276FFB] mb-[50px] px-[120px] py-[50px] rounded-[10px]'>
+				<div className='text-5xl font-extrabold text-white'>
+					<p>{users.name}님의 건강상태를</p>
 					<br />
-					<p>체크해보아요!</p>{" "}
-					{/*사용자이름 props로 받아야하나? */}
+					<p>체크해보아요!</p>
 				</div>
 				<div className='ml-0'>
 					<img
-						className='w-30 h-30'
+						className='w-[150px] ml-[30px]'
 						src='img\medicine.png'
 						alt='약'
 					></img>
 				</div>
 			</div>
-			{/* <div className="bg-[#f0f7ff] py-[60px]"> */}
-			<div className='OneDayCheckBox'>
-				{dates.map((date) => (
-					<OneDay
-						key={date.count}
-						count={date.count}
-						img={date.img}
-						qs={date.qs}
-						selectedButton={selectedButtons[date.count]}
-						handleButtonClick={handleButtonClick}
-					/>
+			<div className='grid grid-cols-2 gap-10 place-items-center m-[10px]'>
+				{questions.map((q) => (
+					<div
+						key={q.key}
+						className='w-[320px] h-full p-4 rounded-lg bg-[#ffffff] drop-shadow-xl'
+					>
+						<div className='mb-3 flex items-center justify-center font-semibold text-[18px]'>
+							<span className='text-[#276FFB]'>
+								{q.count}
+							</span>
+							/4
+						</div>
+						<div className='text-xl p-3 flex flex-col items-center justify-center font-bold'>
+							{q.qs}
+						</div>
+						<div className='flex justify-center my-[30px]'>
+							<img
+								className='w-[120px]'
+								src={q.img}
+								alt=''
+							></img>
+						</div>
+						<div className='Btn grid grid-cols-2 gap-3'>
+							<div
+								className={`BtnContainer rounded-lg font-extrabold text-5xl ${
+									selectedButtons[q.key] === true
+										? "bg-[#d3daf4]"
+										: "bg-[#dddcde]"
+								}`}
+								onClick={() =>
+									handleButtonClick(q.key, true)
+								}
+							>
+								<button
+									className={`Obtn px-4 py-5 w-full ${
+										selectedButtons[q.key] === true
+											? "text-[#208df9]"
+											: "text-[#7b7b7b]"
+									}`}
+								>
+									O
+								</button>
+							</div>
+							<div
+								className={`BtnContainer rounded-lg font-extrabold text-5xl ${
+									selectedButtons[q.key] === false
+										? "bg-[#e4cccc]"
+										: "bg-[#dddcde]"
+								}`}
+								onClick={() =>
+									handleButtonClick(q.key, false)
+								}
+							>
+								<button
+									className={`Xbtn px-4 py-5 w-full ${
+										selectedButtons[q.key] === false
+											? "text-[#e93c3c]"
+											: "text-[#7b7b7b]"
+									}`}
+								>
+									X
+								</button>
+							</div>
+						</div>
+					</div>
 				))}
 			</div>
 			<div className='grid justify-items-center pt-10'>
 				<button
-					className='Submit-btn bg-[#68aefe] text-white font-bold px-6 py-3 rounded-md shadow-md disabled:bg-[#dadada] disabled:text-white font-bold'
+					className='Submit-btn bg-[#68aefe] text-white font-bold px-6 py-3 rounded-md shadow-md disabled:bg-[#dadada] disabled:text-white'
 					onClick={handleSubmit}
 					disabled={!isSubmitEnabled}
 				>
-					{/*handleSubmit버튼 클릭시 selectedButtons데이터를 백으로 보냄*/}
 					체크완료
 				</button>
 			</div>

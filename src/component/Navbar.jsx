@@ -1,5 +1,4 @@
 import React from "react";
-import {useCookies} from "react-cookie";
 import {NavLink, useNavigate} from "react-router-dom";
 
 export default function Navbar({
@@ -8,15 +7,12 @@ export default function Navbar({
 	handleLogout,
 }) {
 	const navigate = useNavigate();
-	const [cookies] = useCookies(["jwtToken"]);
+	const Ltoken = localStorage.getItem("token");
+	const LuniqueKey = localStorage.getItem("uniqueKey");
 
 	const handleNavClick = (path) => {
-		// if (!isChildLoggedIn && !isParentLoggedIn) {
-		// 	navigate("/Login");
-		// } else {
-		// 	navigate(path);
-		// }
-		if (cookies.jwtToken) {
+		// 로그인 여부를 체크하고 로그인 상태가 아니면 로그인 페이지로 리다이렉트
+		if (!Ltoken && !LuniqueKey) {
 			navigate("/Login");
 		} else {
 			navigate(path);
@@ -65,14 +61,14 @@ export default function Navbar({
 					</NavLink>
 				</div>
 				<div>
-					{isParentLoggedIn ? (
+					{Ltoken && Ltoken.length > 0 ? (
 						<button
 							onClick={handleLogout}
 							className='bg-[#208DF9] border-[#208DF9] border-[1px] rounded-[25px] text-white hover:bg-[#57A9FB] hover:text-[white] hover:border-[#57A9FB] font-semibold px-[18px] py-[8px] ml-[5px]'
 						>
 							로그아웃
 						</button>
-					) : isChildLoggedIn ? (
+					) : LuniqueKey && LuniqueKey.length > 0 ? (
 						<div className='flex items-center'>
 							<div
 								onClick={() => handleNavClick("/Parents")}

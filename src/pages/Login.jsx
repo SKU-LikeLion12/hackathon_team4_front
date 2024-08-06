@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {useCookies} from "react-cookie";
 import axios from "axios";
@@ -6,62 +6,99 @@ import axios from "axios";
 export default function Login() {
 	const navigate = useNavigate();
 	const [, setCookies] = useCookies(["token"]);
-	const [userid, setUserid] = useState("");
-
 	const [logininputs, setLogInputs] = useState({
 		id: "",
 		pw: "",
-		key: "",
+		uniqueKey: "",
 	});
+
+	const {id, pw, uniqueKey} = logininputs;
 
 	const handleChange = (e) => {
 		setLogInputs({
 			...logininputs,
 			[e.target.name]: e.target.value,
 		});
-		console.log(e.target.value);
 	};
 
-	const onSubmit = async (e) => {
+	const loginParents = async (e) => {
 		e.preventDefault(); // 폼의 기본 동작을 막음
+		if (!id || !pw) {
+			alert("아이디와 비밀번호를 입력해주세요.");
+			return;
+		}
 		try {
 			const response = await axios.post(
-				"http://localhost:8080/parents/login",
+				`${process.env.REACT_APP_SERVER_URL}/parents/login`,
 				{
-					user_id: "",
-					password: "",
-					key: "",
+					userId: id,
+					password: pw,
 				}
 			);
-			console.log("백엔드에 잘 보냄", response.data);
-			// 백엔드에 잘 보내졌으면 실행되는 코드
-			// 	if (response.status === 200) {
-			// 		alert("로그인이 완료되었습니다!");
-			// 	}
-			// } catch (error) {
-			// 	console.error("오류", error);
-			// 	console.log("실패");
-			// }
-			if (response.data.token) {
-				setCookies("token", response.data.token, {
+			console.log("백엔드 응답: ", response);
+			if (response.status === 200 && response.data) {
+				localStorage.setItem("token", response.data);
+				navigate("/Parents");
+			} else {
+				alert(
+					"로그인 실패: " +
+						(response.data.message || "토큰이 없습니다.")
+				);
+			}
+		} catch (error) {
+			console.error("오류: ", error);
+			alert(
+				"로그인 실패: " +
+					(error.response
+						? error.response.data.message
+						: error.message)
+			);
+		}
+	};
+
+	const loginChild = async (e) => {
+		e.preventDefault(); // 폼의 기본 동작을 막음
+		if (!uniqueKey) {
+			alert("고유키를 입력해주세요.");
+			return;
+		}
+		try {
+			const response = await axios.post(
+				`${process.env.REACT_APP_SERVER_URL}/child/login`,
+				{
+					uniqueKey,
+				}
+			);
+			console.log("백엔드 응답: ", response);
+			if (response.status === 200 && response.data) {
+				setCookies("token", response.data, {
 					path: "/",
 					sameSite: "None",
 					secure: true,
 					domain: process.env.REACT_APP_COOKIE_DOMAIN,
 				});
-				localStorage.setItem("token", response.data.token);
+				localStorage.setItem("token", response.data);
 				navigate("/");
 			} else {
-				console.error(
-					"조건이 충족되지 않음",
-					response.data
+				alert(
+					"로그인 실패: " +
+						(response.data.message || "토큰이 없습니다.")
 				);
 			}
 		} catch (error) {
-			console.error("오류", error);
-			alert("전송실패");
+			console.error("오류: ", error);
+			alert(
+				"로그인 실패: " +
+					(error.response
+						? error.response.data.message
+						: error.message)
+			);
 		}
 	};
+
+	useEffect(() => {
+		console.log("logininputs: ", logininputs);
+	}, [logininputs]);
 
 	const [activeForm, setActiveForm] = useState("guardian");
 	return (
@@ -107,7 +144,7 @@ export default function Login() {
 					</button>
 				</div>
 				{activeForm === "guardian" && (
-					<form onSubmit={onSubmit} method='post'>
+					<form onSubmit={loginParents} method='post'>
 						{/* 보호자(모니터링) 로그인 */}
 						<div className='flex flex-col items-center'>
 							<input
@@ -142,15 +179,15 @@ export default function Login() {
 					</form>
 				)}
 				{activeForm === "uniqueKey" && (
-					<form onSubmit={onSubmit} method='post'>
+					<form onSubmit={loginChild} method='post'>
 						{/* 고유키 로그인 */}
 						<div className='flex flex-col items-center'>
 							<input
-								name='key'
+								name='uniqueKey'
 								className='w-[90%] bg-[#f9fafb] border-[1px] border-[#c2c8cf] rounded-[10px] mt-[12px] mb-[30px] px-[16px] py-[5px]'
 								placeholder='고유키'
 								type='text'
-								value={logininputs.key}
+								value={logininputs.uniqueKey}
 								onChange={handleChange}
 								required
 							/>

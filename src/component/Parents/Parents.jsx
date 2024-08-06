@@ -1,9 +1,12 @@
 import React, {useState} from "react";
 import ChildHealthCare from "./ChildHealthCare";
 import ChildMedicine from "./ChildMedicine";
+import {useNavigate} from "react-router-dom";
 
 export default function Parents() {
 	const [activebtn, setActiveBtn] = useState("health");
+	const navigate = useNavigate();
+	const Ltoken = localStorage.getItem("token");
 
 	return (
 		<div className='h-full bg-[#F0F0F0] pb-[60px]'>

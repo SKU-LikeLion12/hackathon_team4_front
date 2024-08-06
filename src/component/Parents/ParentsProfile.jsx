@@ -3,9 +3,9 @@ import axios from "axios";
 import {CopyToClipboard} from "react-copy-to-clipboard";
 import {FaRegCopy} from "react-icons/fa";
 
-const MyProfile = () => {
+const ParentsProfile = () => {
 	const Ltoken = localStorage.getItem("token");
-	const [child, setChild] = useState({
+	const [users, setUsers] = useState({
 		name: "",
 		gender: "",
 		age: "",
@@ -17,7 +17,7 @@ const MyProfile = () => {
 	const fetchData = async () => {
 		try {
 			const response = await axios.get(
-				`${process.env.REACT_APP_SERVER_URL}/child/uniqueKey`,
+				`${process.env.REACT_APP_SERVER_URL}/parents/child`,
 				{
 					headers: {
 						Authorization: `Bearer ${Ltoken}`,
@@ -26,7 +26,7 @@ const MyProfile = () => {
 			);
 			if (response.status === 200) {
 				// 데이터 상태 업데이트
-				setChild(response.data);
+				setUsers(response.data);
 				console.log("data get: ", response);
 			} else {
 				console.error(
@@ -53,16 +53,16 @@ const MyProfile = () => {
 			/>
 			<div className='flex flex-col items-center my-[20px]'>
 				<div className='text-[22px] font-bold pb-[5px]'>
-					{child.name}
+					{users.name}
 				</div>
 				<div className='flex'>
 					<div className='border-[1px] border-[#FF8540] rounded-[20px] px-[20px] py-[3px] text-[#FF8540] my-[8px] mr-[10px] font-medium'>
-						{child.gender === "female" ? "여성" : "남성"}
+						{users.gender === "female" ? "여성" : "남성"}
 					</div>
 					<div className='flex border-[1px] border-[#FF8540] rounded-[20px] px-[20px] py-[3px] text-[#FF8540] my-[8px] font-medium'>
-						<p>고유키 : {child.uniqueKey}</p>
+						<p>고유키 : {users.uniqueKey}</p>
 						<CopyToClipboard
-							text={child.uniqueKey}
+							text={users.uniqueKey}
 							onCopy={() =>
 								alert("고유키가 복사되었습니다.")
 							}
@@ -80,7 +80,7 @@ const MyProfile = () => {
 						나이
 					</div>
 					<div className='text-[black] font-medium'>
-						{child.age} 세
+						{users.age} 세
 					</div>
 				</div>
 				<div className='flex flex-col items-center px-[35px] border-x-[2px] border-[#D9D9D9]'>
@@ -88,7 +88,7 @@ const MyProfile = () => {
 						키
 					</div>
 					<div className='text-[black] font-medium'>
-						{child.height} cm
+						{users.height} cm
 					</div>
 				</div>
 				<div className='flex flex-col items-center pl-[30px]'>
@@ -96,7 +96,7 @@ const MyProfile = () => {
 						몸무게
 					</div>
 					<div className='text-[black] font-medium'>
-						{child.weight} kg
+						{users.weight} kg
 					</div>
 				</div>
 			</div>
@@ -104,4 +104,4 @@ const MyProfile = () => {
 	);
 };
 
-export default MyProfile;
+export default ParentsProfile;

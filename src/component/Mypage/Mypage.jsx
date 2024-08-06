@@ -1,34 +1,10 @@
 import React, {useState} from "react";
 // import BMI from "../Mypage/BMI";
 import BMIChart from "./BMIChart";
-import MyProfile from "./MyProfile";
+import MyProfile from "../Parents/ParentsProfile";
 import axios from "axios";
 
 export default function Mypage() {
-	const [userData, setUserData] = useState({
-		name: "노은아",
-		gender: "",
-		age: "",
-		id: 0,
-		bmi: 33,
-	});
-	const {bmi} = userData;
-
-	const onSubmit = async (e) => {
-		try {
-			const response = await axios.get(
-				"http://localhost:8080/parents/add"
-			);
-
-			// 500 400 200
-			if (response.status === 200) {
-				setUserData(response.data);
-			}
-		} catch (error) {
-			console.error("오류", error);
-			console.log("실패");
-		}
-	};
 	return (
 		<>
 			<div className='bg-[#F0F7FF] py-[60px] px-[90px]'>
@@ -38,7 +14,7 @@ export default function Mypage() {
 							<div>오늘 하루도 힘내세요!</div>
 						</div>
 						<div>
-							<BMIChart bmi={bmi} />
+							<BMIChart />
 						</div>
 					</div>
 					<div className='pl-[60px]'>

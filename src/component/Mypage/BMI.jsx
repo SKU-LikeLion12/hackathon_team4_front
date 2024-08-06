@@ -50,7 +50,7 @@ function App() {
 				</button>
 			</div>
 			{error && <p style={{color: "red"}}>{error}</p>}
-			{bmi && <BMIChart bmi={bmi} />}
+			{bmi && <BMIChart bmis={bmi} />}
 		</div>
 	);
 }
