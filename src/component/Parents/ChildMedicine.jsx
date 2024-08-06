@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import {NavLink, useNavigate} from "react-router-dom";
 import axios from "axios";
+import CheckedMedicine from "./../Medicine/CheckedMedicine";
 
 export default function ChildMedicine() {
 	const Ltoken = localStorage.getItem("token");
@@ -55,6 +56,9 @@ export default function ChildMedicine() {
 						서비스 바로 이용하기
 					</NavLink>
 				</span>
+			</div>
+			<div className='flex justify-center'>
+				<CheckedMedicine />
 			</div>
 		</div>
 	);
