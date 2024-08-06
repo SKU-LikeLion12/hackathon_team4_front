@@ -11,7 +11,7 @@ function OneDayCheck() {
 	const fetchData = async () => {
 		try {
 			const response = await axios.get(
-				`${process.env.REACT_APP_SERVER_URL}/parents/child`,
+				`${process.env.REACT_APP_SERVER_URL}/child/uniqueKey`,
 				{
 					headers: {
 						Authorization: `Bearer ${Ltoken}`,

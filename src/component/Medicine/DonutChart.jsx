@@ -19,7 +19,7 @@ ChartJS.register(
 
 export default function DonutChart() {
 	// const [percent, setPercent] = useState(0);
-	const percent = 20; // 임의 데이터였던 것
+	const percent = 100; // 임의 데이터였던 것
 
 	// useEffect(() => {
 	//   const MedicinePercent = async () => {

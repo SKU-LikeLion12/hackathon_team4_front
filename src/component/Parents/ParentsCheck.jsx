@@ -12,6 +12,40 @@ const ParentsCheck = () => {
 		niceDailyMood: null,
 	});
 
+	const [users, setUserss] = useState({
+		name: "",
+	});
+
+	const fetchDatas = async () => {
+		try {
+			const response = await axios.get(
+				`${process.env.REACT_APP_SERVER_URL}/parents/child`,
+				{
+					headers: {
+						Authorization: `Bearer ${Ltoken}`,
+					},
+				}
+			);
+			if (response.status === 200) {
+				// 데이터 상태 업데이트
+				setUserss(response.data);
+				console.log("data get: ", response);
+			} else {
+				console.error(
+					"조건이 충족되지 않음",
+					response.data
+				);
+			}
+		} catch (error) {
+			console.error("오류", error);
+			console.log("실패");
+		}
+	};
+
+	useEffect(() => {
+		fetchDatas();
+	}, []);
+
 	// 데이터 가져오기
 	const fetchData = async () => {
 		const today = new Date().toISOString().split("T")[0];
@@ -68,10 +102,10 @@ const ParentsCheck = () => {
 				</button>
 				<div className='flex flex-col items-center font-bold'>
 					<div className='fontBold text-[25px]'>
-						님의 오늘 하루 건강 체크
+						{users.name}님의 오늘 하루 건강 체크
 					</div>
 					<div className='text-[16px] text-[grey]'>
-						님이 체크한 건강 상태입니다!
+						{users.name}님이 체크한 건강 상태입니다!
 					</div>
 				</div>
 				<button>
