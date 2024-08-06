@@ -1,11 +1,7 @@
 import React from "react";
 import {NavLink, useNavigate} from "react-router-dom";
 
-export default function Navbar({
-	isChildLoggedIn,
-	isParentLoggedIn,
-	handleLogout,
-}) {
+export default function Navbar({handleLogout}) {
 	const navigate = useNavigate();
 	const Ltoken = localStorage.getItem("token");
 	const LuniqueKey = localStorage.getItem("uniqueKey");
@@ -53,12 +49,6 @@ export default function Navbar({
 					>
 						하루건강
 					</div>
-					{/* <div
-						onClick={() => handleNavClick("/Mypage")}
-						className='text-black text-[17px] font-semibold hover:text-[#208DF9] focus:text-[#208DF9] mx-[20px] cursor-pointer'
-					>
-						마이페이지
-					</div> */}
 				</div>
 				<div>
 					{Ltoken && Ltoken.length > 0 ? (
@@ -71,7 +61,7 @@ export default function Navbar({
 					) : LuniqueKey && LuniqueKey.length > 0 ? (
 						<div className='flex items-center'>
 							<div
-								onClick={() => handleNavClick("/Parents")}
+								onClick={() => navigate("/Parents")}
 								className='bg-transparent border-[#208DF9] border-[1px] rounded-[25px] text-[#208DF9] hover:bg-[#57A9FB] hover:text-[white] hover:border-[#57A9FB] font-semibold px-[18px] py-[8px] ml-[5px] cursor-pointer'
 							>
 								모니터링

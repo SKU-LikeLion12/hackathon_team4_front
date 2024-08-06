@@ -4,8 +4,35 @@ import Lottie from "react-lottie-player";
 import Fit31 from "../Json/Fit31.json";
 import Fit32 from "../Json/Fit32.json";
 import Fit33 from "../Json/Fit33.json";
+import axios from "axios";
 
 const LowerBody = () => {
+	const Ltoken = localStorage.getItem("token");
+	const lowerOnclick = async (e, workoutName) => {
+		e.preventDefault();
+		const today = new Date().toISOString().split("T")[0];
+		const dataToSend = {
+			checkedDay: today,
+			workoutType: "하체",
+			workoutName: workoutName,
+		};
+
+		try {
+			const response = await axios.post(
+				`${process.env.REACT_APP_SERVER_URL}/workoutcheck/add`,
+				dataToSend,
+				{
+					headers: {
+						Authorization: `Bearer ${Ltoken}`, // 헤더에 토큰 포함
+					},
+				}
+			);
+			console.log("잘보냄", response.data);
+		} catch (error) {
+			console.error("오류", error);
+			console.log("실패");
+		}
+	};
 	return (
 		<div className='flex justify-center'>
 			<div className='grid grid-cols-3 px-[200px] pt-[20px] pb-[50px]'>
@@ -13,7 +40,7 @@ const LowerBody = () => {
 				<div className='w-[250px] h-full bg-[#FFE0E6] py-[15px] px-[20px] mx-[80px] rounded-[8px] drop-shadow-xl'>
 					<Link
 						className=' flex flex-col bg-[#F5F5F5] px-[10px] py-[15px] rounded-[8px]'
-						to='/'
+						to='https://youtu.be/9sZTpJT6mc8?si=XMwX6PdvwyBzUkBn'
 					>
 						<div className='flex justify-center'>
 							<Lottie
@@ -42,12 +69,22 @@ const LowerBody = () => {
 							</span>
 						</div>
 					</div>
+					<div className='flex justify-center mt-[20px]'>
+						<button
+							onClick={(e) =>
+								lowerOnclick(e, "다리 스트레칭")
+							}
+							className='bg-[#FF90A8] py-[10px] px-[60px] text-white rounded-[30px] font-bold drop-shadow-md'
+						>
+							운동 완료
+						</button>
+					</div>
 				</div>
 				{/* 운동2 */}
 				<div className='w-[250px] h-full bg-[#FFE0E6] py-[15px] px-[20px] mx-[80px] rounded-[8px] drop-shadow-xl'>
 					<Link
 						className=' flex flex-col bg-white px-[10px] py-[15px] rounded-[8px]'
-						to='/'
+						to='https://youtu.be/w04XkiVO4ro?si=XoeBzvcehhpJeLEc'
 					>
 						<div className='flex justify-center h-[190px] w-[190px]'>
 							<Lottie
@@ -76,12 +113,20 @@ const LowerBody = () => {
 							</span>
 						</div>
 					</div>
+					<div className='flex justify-center mt-[20px]'>
+						<button
+							onClick={(e) => lowerOnclick(e, "스쿼트")}
+							className='bg-[#FF90A8] py-[10px] px-[60px] text-white rounded-[30px] font-bold drop-shadow-md'
+						>
+							운동 완료
+						</button>
+					</div>
 				</div>
 				{/* 운동3 */}
 				<div className='w-[250px] h-full bg-[#FFE0E6] py-[15px] px-[20px] mx-[80px] rounded-[8px] drop-shadow-xl'>
 					<Link
 						className=' flex flex-col bg-[#F5F5F5] px-[10px] py-[15px] rounded-[8px]'
-						to='/'
+						to='https://youtu.be/TwRJ5iqa9Dk?si=GI3Xt1W5ckzv5MuC'
 					>
 						<div className='flex justify-center'>
 							<Lottie
@@ -109,6 +154,16 @@ const LowerBody = () => {
 								끌어올리며 걷습니다.
 							</span>
 						</div>
+					</div>
+					<div className='flex justify-center mt-[20px]'>
+						<button
+							onClick={(e) =>
+								lowerOnclick(e, "무릎들어 걷기")
+							}
+							className='bg-[#FF90A8] py-[10px] px-[60px] text-white rounded-[30px] font-bold drop-shadow-md'
+						>
+							운동 완료
+						</button>
 					</div>
 				</div>
 			</div>

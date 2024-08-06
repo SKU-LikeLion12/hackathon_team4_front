@@ -44,7 +44,7 @@ const FitHealth = () => {
 
 	return (
 		<div className='h-full flex flex-col items-center bg-[white] py-[80px]'>
-			<div className='flex justify-center py-[40px] px-[20px] mb-[40px] text-[25px] font-semibold bg-[white] text-white rounded-[20px] drop-shadow-xl'>
+			<div className='flex justify-center py-[40px] px-[70px] mb-[40px] text-[25px] font-semibold bg-[#208DF9] text-[white] rounded-[20px] drop-shadow-xl'>
 				{users.name}님을 위한 맞춤형 운동을 추천해드릴게요!
 			</div>
 			<div className='flex items-center justify-center py-[40px] font-bold text-[18px] drop-shadow-md'>

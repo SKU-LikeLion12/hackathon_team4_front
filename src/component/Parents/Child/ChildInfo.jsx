@@ -102,27 +102,29 @@ export default function SignupChild() {
 					<div className='flex flex-col items-start'>
 						<span className='text-[13px]'>성별</span>
 						<ul className='flex flex flex-row items-start w-[50%]'>
-							<li className='flex'>
+							<li className='flex items-center my-[10px]'>
 								<input
 									name='gender'
 									value='male' // 남자에 대한 고정된 값 설정
 									checked={childinputs.gender === "male"} // 현재 선택된 값 확인
 									onChange={handleChange}
-									className='w-full bg-[#f9fafb] border-[1px] border-[#c2c8cf] rounded-[10px] mt-[12px] mb-[30px] px-[16px] py-[5px]'
+									className='w-[50px] bg-[#f9fafb] border-[1px] border-[#c2c8cf] rounded-[10px]px-[16px] py-[5px]'
 									type='radio'
 								/>
-								<label>남자</label>
+								<label className='w-[50px] text-center'>
+									남자
+								</label>
 							</li>
-							<li className='flex'>
+							<li className='flex items-center  my-[10px]'>
 								<input
 									name='gender'
 									value='female' // 여자에 대한 고정된 값 설정
 									checked={childinputs.gender === "female"} // 현재 선택된 값 확인
 									onChange={handleChange}
-									className='w-full bg-[#f9fafb] border-[1px] border-[#c2c8cf] rounded-[10px] mt-[12px] mb-[30px] px-[16px] py-[5px]'
+									className='w-[50px] bg-[#f9fafb] border-[1px] border-[#c2c8cf] rounded-[10px] px-[16px] py-[5px]'
 									type='radio'
 								/>
-								<label htmlFor=''>여자</label>
+								<label className='w-[50px]'>여자</label>
 							</li>
 						</ul>
 					</div>

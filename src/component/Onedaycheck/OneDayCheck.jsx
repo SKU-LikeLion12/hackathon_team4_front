@@ -124,19 +124,8 @@ function OneDayCheck() {
 
 	return (
 		<div className='flex flex-col items-center bg-[#f0f7ff] py-[60px] px-[60px]'>
-			<div className='text flex items-center justify-center bg-[#276FFB] mb-[50px] px-[120px] py-[50px] rounded-[10px]'>
-				<div className='text-5xl font-extrabold text-white'>
-					<p>{users.name}님의 건강상태를</p>
-					<br />
-					<p>체크해보아요!</p>
-				</div>
-				<div className='ml-0'>
-					<img
-						className='w-[150px] ml-[30px]'
-						src='img\medicine.png'
-						alt='약'
-					></img>
-				</div>
+			<div className='flex justify-center py-[40px] px-[70px] mb-[40px] text-[25px] font-semibold bg-[#208DF9] text-[white] rounded-[20px] drop-shadow-xl'>
+				{users.name}님의 건강상태를 체크해보아요!⭐⭐
 			</div>
 			<div className='grid grid-cols-2 gap-10 place-items-center m-[10px]'>
 				{questions.map((q) => (

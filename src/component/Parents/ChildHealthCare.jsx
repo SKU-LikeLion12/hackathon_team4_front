@@ -1,13 +1,30 @@
 import React, {useState, useEffect} from "react";
-import {useNavigate} from "react-router-dom";
+import {NavLink, useNavigate} from "react-router-dom";
 import MyProfile from "./ParentsProfile";
 import BMIChart from "../Mypage/BMIChart";
 import Exercise from "./Exercise";
-import Banner from "./Banner";
 import ParentsCheck from "./ParentsCheck";
 import axios from "axios";
 
 export default function ChildHealthCare() {
+	const [currentIndex, setCurrentIndex] = useState(0);
+	const images = [
+		"img/banner1.png",
+		"img/banner2.png",
+		"img/banner3.png",
+	];
+
+	const handlePrevClick = () => {
+		setCurrentIndex((prevIndex) =>
+			prevIndex === 0 ? images.length - 1 : prevIndex - 1
+		);
+	};
+
+	const handleNextClick = () => {
+		setCurrentIndex((prevIndex) =>
+			prevIndex === images.length - 1 ? 0 : prevIndex + 1
+		);
+	};
 	const navigate = useNavigate();
 	const Ltoken = localStorage.getItem("token");
 
@@ -48,16 +65,18 @@ export default function ChildHealthCare() {
 	return (
 		<div className='h-full'>
 			<div className='w-full bg-[#208DF9] h-[250px] flex flex-col items-center justify-center text-white'>
-				<span className='text-[25px] mb-[20px] font-bold'>
+				<span className='text-[25px] mb-[20px] font-bold text-center'>
 					{users.name}님의 건강 정보를 <br />
 					한눈에 볼 수 있어요!
 				</span>
 				<span>
-					{users.name}님의 개인정보는 마이페이지에서 수정
-					가능합니다.
+					{users.name}님의 건강정보와 운동기록을
+					확인해보세요!
 				</span>
 				<span className='underline underline-offset-1'>
-					마이페이지 바로가기
+					<NavLink to='/Login'>
+						서비스 바로 이용하기
+					</NavLink>
 				</span>
 			</div>
 			<div className='pt-[40px] px-[60px]'>
@@ -76,9 +95,7 @@ export default function ChildHealthCare() {
 						{/* 오른쪽 위: 운동 기록 */}
 						<Exercise />
 						{/* 오른쪽 아래 */}
-						<div className='flex flex-col items-center bg-[white] py-[30px] px-[10px] rounded-[10px] overflow-hidden drop-shadow-md h-[240px]'>
-							<Banner />
-						</div>
+						<div className='banner flex flex-col items-center bg-[white] py-[30px] px-[10px] rounded-[10px] overflow-hidden drop-shadow-md h-[294px]'></div>
 					</div>
 				</div>
 				<div className='flex flex-col items-center px-[60px] py-[40px]'>

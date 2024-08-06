@@ -27,23 +27,23 @@ const About = () => {
 				</div>
 			</div>
 			{/* section2 */}
-			<div className='flex flex-col items-center justify-center text-white text-[20px] bg-[#5A6CFF] px-[160px] py-[50px] font-light'>
+			<div className='flex flex-col items-center justify-center text-white text-[20px] bg-[#5A6CFF] px-[160px] py-[70px] font-light'>
 				<span>맞춤형 운동 서비스와</span>
 				<span>
 					보호자 모니터링 서비스로 자녀의 건강을 체크하세요!
 				</span>
 			</div>
 			{/* section3 */}
-			<div className=' px-[160px] py-[70px]'>
+			<div className='bg-white px-[160px] py-[70px]'>
 				<div className='flex flex-col items-center mb-[70px]'>
 					<span className='text-[40px] font-bold text-[black]'>
-						<strong className='text-[#486AFF]'>
+						<strong className='text-[#5A6CFF]'>
 							{/* border-b-[#486AFF] */}
 							Id Fit
 						</strong>
 						은 언제 필요할까요 ?
 					</span>
-					<span className='text-[20px] font-medium text-[#535F76] mt-[20px]'>
+					<span className='text-[17px] font-medium text-[#535F76] mt-[20px]'>
 						Id Fit이 제공하는 서비스를 소개합니다.
 					</span>
 					<div className='grid grid-cols-3 gap-x-20 mt-[60px]'>
@@ -83,8 +83,8 @@ const About = () => {
 								/>
 							</div>
 							<div className='w-[300px] text-center font-light'>
-								BMI에 따른 chatgpt를 활용한 <br />
-								맞춤형 운동 추천 서비스를 제공합니다.
+								보호자와 사용자의 계정을 구분하여 <br />
+								사용자의 운동기록 및 건강결과를 제공합니다.
 							</div>
 						</div>
 						<div className='flex flex-col items-center px-[10px]'>
@@ -105,26 +105,18 @@ const About = () => {
 							<div className='w-[300px] text-center font-light'>
 								매일 간단한 건강 질문을 제공하여
 								<br />
-								수면, 기분, 활동 등을 파악합니다.
+								수면, 기분, 활동 등을 파악합니다
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 			{/* section4 */}
-			<div className=' px-[160px] py-[70px]'>
-				<div className='flex flex-col items-center mb-[70px]'>
-					<span className='text-[40px] font-bold text-[#486AFF]'>
-						"Id FiT과 함께 건강한 습관을 길러요!"
+			<div className='bg-[#E3E7FF] px-[160px] py-[50px]'>
+				<div className='flex flex-col items-center'>
+					<span className='text-[35px] font-bold text-[#856BFF] drop-shadow-xl'>
+						Id FiT과 함께 건강한 습관을 길러요!
 					</span>
-					<span className='text-[20px] font-medium text-[#535F76]'>
-						Id Fit이 제공하는 서비스를 소개합니다.
-					</span>
-				</div>
-				<div className='grid grid-cols-2 place-items-center'>
-					<div className='flex flex-col items-center bg-[#E1E8F8] w-[500px] bg-white drop-shadow-md px-[50px] py-[30px] rounded-[20px] '>
-						adsfsadfa
-					</div>
 				</div>
 			</div>
 		</div>

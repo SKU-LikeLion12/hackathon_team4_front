@@ -150,3 +150,9 @@ input:focus {
 .Aboutbox3 {
 	filter: drop-shadow(0px 0px 3px #856bff);
 }
+
+.banner {
+	background-image: url("../../public/img/banner1.png");
+	background-size: cover;
+	background-position: center;
+}
