@@ -29,36 +29,36 @@ export default function Navbar({
 			</div>
 			<div className='flex flex-1 justify-between items-center ml-[20px]'>
 				<div className='flex'>
+					<NavLink
+						to='/'
+						className='text-black text-[18px] font-medium hover:text-[#208DF9] focus:text-[#208DF9] mx-[30px]'
+					>
+						About
+					</NavLink>
 					<div
 						onClick={() => handleNavClick("/Medicine")}
-						className='text-black text-[17px] font-semibold hover:text-[#208DF9] focus:text-[#208DF9] mx-[20px] cursor-pointer'
+						className='text-black text-[18px] font-medium hover:text-[#208DF9] focus:text-[#208DF9] mx-[30px] cursor-pointer'
 					>
 						약 체크하기
 					</div>
 					<div
 						onClick={() => handleNavClick("/FitHealth")}
-						className='text-black text-[17px] font-semibold hover:text-[#208DF9] focus:text-[#208DF9] mx-[20px] cursor-pointer'
+						className='text-black text-[18px] font-medium hover:text-[#208DF9] focus:text-[#208DF9] mx-[30px] cursor-pointer'
 					>
 						맞춤운동
 					</div>
 					<div
 						onClick={() => handleNavClick("/OneDayCheck")}
-						className='text-black text-[17px] font-semibold hover:text-[#208DF9] focus:text-[#208DF9] mx-[20px] cursor-pointer'
+						className='text-black text-[18px] font-medium hover:text-[#208DF9] focus:text-[#208DF9] mx-[30px] cursor-pointer'
 					>
 						하루건강
 					</div>
-					<div
+					{/* <div
 						onClick={() => handleNavClick("/Mypage")}
 						className='text-black text-[17px] font-semibold hover:text-[#208DF9] focus:text-[#208DF9] mx-[20px] cursor-pointer'
 					>
 						마이페이지
-					</div>
-					<NavLink
-						to='/'
-						className='text-black text-[17px] font-semibold hover:text-[#208DF9] focus:text-[#208DF9] mx-[20px]'
-					>
-						About
-					</NavLink>
+					</div> */}
 				</div>
 				<div>
 					{Ltoken && Ltoken.length > 0 ? (

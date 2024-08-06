@@ -1,5 +1,9 @@
 import React from "react";
 import {Link} from "react-router-dom";
+import Lottie from "react-lottie-player";
+import Fit31 from "../Json/Fit31.json";
+import Fit32 from "../Json/Fit32.json";
+import Fit33 from "../Json/Fit33.json";
 
 const LowerBody = () => {
 	return (
@@ -8,14 +12,15 @@ const LowerBody = () => {
 				{/* 운동1 */}
 				<div className='w-[250px] h-full bg-[#FFE0E6] py-[15px] px-[20px] mx-[80px] rounded-[8px] drop-shadow-xl'>
 					<Link
-						className=' flex flex-col bg-white px-[10px] py-[15px] rounded-[8px]'
+						className=' flex flex-col bg-[#F5F5F5] px-[10px] py-[15px] rounded-[8px]'
 						to='/'
 					>
 						<div className='flex justify-center'>
-							<img
-								className='h-[130px]'
-								src='img/fit3-1.png'
-								alt=''
+							<Lottie
+								className='w-[300px]'
+								loop
+								animationData={Fit31}
+								play
 							/>
 						</div>
 						<div className='flex justify-end'>
@@ -44,11 +49,12 @@ const LowerBody = () => {
 						className=' flex flex-col bg-white px-[10px] py-[15px] rounded-[8px]'
 						to='/'
 					>
-						<div className='flex justify-center'>
-							<img
-								className='h-[130px]'
-								src='img/fit3-2.png'
-								alt=''
+						<div className='flex justify-center h-[190px] w-[190px]'>
+							<Lottie
+								className='w-[300px]'
+								loop
+								animationData={Fit32}
+								play
 							/>
 						</div>
 						<div className='flex justify-end'>
@@ -74,14 +80,15 @@ const LowerBody = () => {
 				{/* 운동3 */}
 				<div className='w-[250px] h-full bg-[#FFE0E6] py-[15px] px-[20px] mx-[80px] rounded-[8px] drop-shadow-xl'>
 					<Link
-						className=' flex flex-col bg-white px-[10px] py-[15px] rounded-[8px]'
+						className=' flex flex-col bg-[#F5F5F5] px-[10px] py-[15px] rounded-[8px]'
 						to='/'
 					>
 						<div className='flex justify-center'>
-							<img
-								className='h-[130px]'
-								src='img/fit3-3.png'
-								alt=''
+							<Lottie
+								className=''
+								loop
+								animationData={Fit33}
+								play
 							/>
 						</div>
 						<div className='flex justify-end'>

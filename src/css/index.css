@@ -134,3 +134,19 @@ input:focus {
 	background-size: cover;
 	background-position: center;
 }
+
+#Aboutbox {
+	border-radius: 7px 40px 40px 7px;
+}
+
+.Aboutbox1 {
+	filter: drop-shadow(0px 0px 3px #6ea0ff);
+}
+
+.Aboutbox2 {
+	filter: drop-shadow(0px 0px 3px #5a6cff);
+}
+
+.Aboutbox3 {
+	filter: drop-shadow(0px 0px 3px #856bff);
+}

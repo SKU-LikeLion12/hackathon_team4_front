@@ -1,14 +1,51 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import LowerBody from "./LowerBody";
 import UpperBody from "./UpperBody";
 import Muscle from "./Muscle";
+import axios from "axios";
 
 const FitHealth = () => {
 	const [activebtn, setActiveBtn] = useState("1");
+	const Ltoken = localStorage.getItem("token");
+
+	const [users, setUsers] = useState({
+		name: "",
+	});
+
+	const fetchData = async () => {
+		try {
+			const response = await axios.get(
+				`${process.env.REACT_APP_SERVER_URL}/child/uniqueKey`,
+				{
+					headers: {
+						Authorization: `Bearer ${Ltoken}`,
+					},
+				}
+			);
+			if (response.status === 200) {
+				// 데이터 상태 업데이트
+				setUsers(response.data);
+				console.log("data get: ", response);
+			} else {
+				console.error(
+					"조건이 충족되지 않음",
+					response.data
+				);
+			}
+		} catch (error) {
+			console.error("오류", error);
+			console.log("실패");
+		}
+	};
+
+	useEffect(() => {
+		fetchData();
+	}, []);
+
 	return (
-		<div className='h-full bg-[white] py-[80px]'>
-			<div className='flex justify-center pb-[40px] text-[25px] font-semibold'>
-				사자님을 위한 맞춤형 운동을 추천해드릴게요!
+		<div className='h-full flex flex-col items-center bg-[white] py-[80px]'>
+			<div className='flex justify-center py-[40px] px-[20px] mb-[40px] text-[25px] font-semibold bg-[white] text-white rounded-[20px] drop-shadow-xl'>
+				{users.name}님을 위한 맞춤형 운동을 추천해드릴게요!
 			</div>
 			<div className='flex items-center justify-center py-[40px] font-bold text-[18px] drop-shadow-md'>
 				<div className='px-[60px]'>

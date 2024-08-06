@@ -1,5 +1,9 @@
 import React from "react";
 import {Link} from "react-router-dom";
+import Lottie from "react-lottie-player";
+import Fit11 from "../Json/Fit11.json";
+import Fit12 from "../Json/Fit12.json";
+import Fit13 from "../Json/Fit13.json";
 
 const Muscle = () => {
 	return (
@@ -8,14 +12,15 @@ const Muscle = () => {
 				{/* 운동1 */}
 				<div className='w-[250px] h-full bg-[#FDF3DB] py-[15px] px-[20px] mx-[80px] rounded-[8px] drop-shadow-xl'>
 					<Link
-						className=' flex flex-col bg-white px-[10px] py-[15px] rounded-[8px]'
+						className=' flex flex-col bg-[#F5F5F5] px-[10px] py-[15px] rounded-[8px]'
 						to='/'
 					>
 						<div className='flex justify-center'>
-							<img
-								className='h-[130px]'
-								src='img/fit1-1.png'
-								alt=''
+							<Lottie
+								className='w-[300px]'
+								loop
+								animationData={Fit11}
+								play
 							/>
 						</div>
 						<div className='flex justify-end'>
@@ -45,10 +50,11 @@ const Muscle = () => {
 						to='/'
 					>
 						<div className='flex justify-center'>
-							<img
-								className='h-[130px]'
-								src='img/fit1-2.jpg'
-								alt=''
+							<Lottie
+								className='w-[300px]'
+								loop
+								animationData={Fit12}
+								play
 							/>
 						</div>
 						<div className='flex justify-end'>
@@ -74,14 +80,15 @@ const Muscle = () => {
 				{/* 운동3 */}
 				<div className='w-[250px] h-full bg-[#FDF3DB] py-[15px] px-[20px] mx-[80px] rounded-[8px] drop-shadow-xl'>
 					<Link
-						className=' flex flex-col bg-white px-[10px] py-[15px] rounded-[8px]'
+						className=' flex flex-col bg-[#F5F5F5] px-[10px] py-[15px] rounded-[8px]'
 						to='/'
 					>
 						<div className='flex justify-center'>
-							<img
-								className='h-[130px]'
-								src='img/fit1-3.png'
-								alt=''
+							<Lottie
+								className='w-[300px]'
+								loop
+								animationData={Fit13}
+								play
 							/>
 						</div>
 						<div className='flex justify-end'>

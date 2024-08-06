@@ -1,5 +1,9 @@
 import React from "react";
 import {Link} from "react-router-dom";
+import Lottie from "react-lottie-player";
+import Fit21 from "../Json/Fit21.json";
+import Fit22 from "../Json/Fit22.json";
+import Fit23 from "../Json/Fit23.json";
 
 const UpperBody = () => {
 	return (
@@ -8,14 +12,15 @@ const UpperBody = () => {
 				{/* 운동1 */}
 				<div className='w-[250px] h-full bg-[#D7ECFB] py-[15px] px-[20px] mx-[80px] rounded-[8px] drop-shadow-xl'>
 					<Link
-						className=' flex flex-col bg-white px-[10px] py-[15px] rounded-[8px]'
+						className=' flex flex-col bg-[#F5F5F5] px-[10px] py-[15px] rounded-[8px]'
 						to='/'
 					>
 						<div className='flex justify-center'>
-							<img
-								className='h-[130px]'
-								src='img/fit2-1.png'
-								alt=''
+							<Lottie
+								className='w-[300px]'
+								loop
+								animationData={Fit21}
+								play
 							/>
 						</div>
 						<div className='flex justify-end'>
@@ -41,14 +46,15 @@ const UpperBody = () => {
 				{/* 운동2 */}
 				<div className='w-[250px] h-full bg-[#D7ECFB] py-[15px] px-[20px] mx-[80px] rounded-[8px] drop-shadow-xl'>
 					<Link
-						className=' flex flex-col bg-white px-[10px] py-[15px] rounded-[8px]'
+						className=' flex flex-col bg-[#F5F5F5] px-[10px] py-[15px] rounded-[8px]'
 						to='/'
 					>
 						<div className='flex justify-center'>
-							<img
-								className='h-[130px]'
-								src='img/fit2-2.png'
-								alt=''
+							<Lottie
+								className='w-[300px]'
+								loop
+								animationData={Fit22}
+								play
 							/>
 						</div>
 						<div className='flex justify-end'>
@@ -74,14 +80,15 @@ const UpperBody = () => {
 				{/* 운동3 */}
 				<div className='w-[250px] h-full bg-[#D7ECFB] py-[15px] px-[20px] mx-[80px] rounded-[8px] drop-shadow-xl'>
 					<Link
-						className=' flex flex-col bg-white px-[10px] py-[15px] rounded-[8px]'
+						className=' flex flex-col bg-[#F5F5F5] px-[10px] py-[15px] rounded-[8px]'
 						to='/'
 					>
-						<div className='flex justify-center'>
-							<img
-								className='h-[130px]'
-								src='img/fit2-3.png'
-								alt=''
+						<div className='flex justify-center bg-[#F5F5F5]'>
+							<Lottie
+								className='w-[300px]'
+								loop
+								animationData={Fit23}
+								play
 							/>
 						</div>
 						<div className='flex justify-end'>
