@@ -7,20 +7,25 @@ import axios from 'axios';
 ChartJS.register(ArcElement, Tooltip, Legend, ChartDataLabels);
 
 export default function DonutChart() {
-  // const [percent, setPercent] = useState(0);
-  const percent = 20;  // 임의 데이터였던 것
+  const [percent, setPercent] = useState(0);
+	const Ltoken = localStorage.getItem("token");
 
-  // useEffect(() => {
-  //   const MedicinePercent = async () => {
-  //     try {
-  //       const response = await axios.get('url'); // 백엔드 엔드포인트로 변경
-  //       setPercent(response.data.percent); // 백엔드에서 받은 percent 데이터로 설정  
-  //     } catch (error) {
-  //       console.error('Error MedicenePercent: ', error);
-  //     }
-  //   };
-  //   MedicinePercent();
-  // }, []);
+  useEffect(() => {
+    const MedicinePercent = async () => {
+      try {
+        const response = await axios.get('http://13.209.29.41:8080/api/medicine-check/intake-rate', {
+          headers: {
+            Authorization: `Bearer ${Ltoken}`,
+          }
+        }); // 백엔드 엔드포인트로 변경
+        console.log(response, '약 섭취 현황 응답')
+        setPercent(response.data.percent); // 백엔드에서 받은 percent 데이터로 설정  
+      } catch (error) {
+        console.error('Error MedicenePercent: ', error);
+      }
+    };
+    MedicinePercent();
+  }, []);
 
   const data = {
     labels: ['약 복용'], // 커서 올렸을 때 뜨는값

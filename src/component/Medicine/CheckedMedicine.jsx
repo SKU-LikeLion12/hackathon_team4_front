@@ -2,7 +2,15 @@ import React,{useState,useEffect}from 'react'
 import axios from 'axios';
 import DonutChart from './DonutChart';
 
-export default function CheckedMedicine({ Ltoken }) {
+export default function CheckedMedicine() {
+	const Ltoken = localStorage.getItem("token");
+  
+  // useEffect(() => {
+  //   const token = localStorage.getItem('token');
+  //   const Token = localStorage.getItem('Token');
+  //   setToken(token);
+  // }, []);
+  
     const [activeTab, setActiveTab] = useState('tab1');
     const [medicines, setMedicines] = useState({
         morning:[],
@@ -12,52 +20,55 @@ export default function CheckedMedicine({ Ltoken }) {
     const [plusMedicines, setPlusMedicines] = useState([{title: ' ', morning: false, lunch: false, dinner: false}]);
     const [isFormSubmitted, setIsFormSubmitted] = useState(false);
 
+    const getMedicineData = async () => {
+      try {
+          const response = await axios.get('http://13.209.29.41:8080/schedule/get',
+              {
+                headers: {
+                  Authorization: `Bearer ${Ltoken}`,
+                },
+              });
+           // 엔드포인트 수정하기
+
+           console.log(response, 'get 응답')
+
+          // 임의 데이터 사용 (DB에 사용자가 여러명 있는데 그 중 특정 1사람 골라내기 위해 토큰을 일단 가져오면 그거에 해당하는 약들만 가져와짐)
+          const data = [
+              {title: '타이레놀',
+                  morning: 'true',
+                  lunch:'true',
+                  dinner: 'true',
+                  scheduleMedicineId: 1
+                   
+              },
+              {title: '비타민C', morning: 'true', lunch:'false', dinner: 'false', scheduleMedicineId: 2 },
+              {title: '고혈압약', morning: 'false', lunch:'true', dinner: 'false', scheduleMedicineId: 3},
+              {title: '유산균', morning: 'false', lunch:'false', dinner: 'true',scheduleMedicineId: 4},
+          ];
+
+
+          // true인 것만 필터링됨. 아침,점심,저녁 true인것만 띄워야하니까 이건 필요 
+          setMedicines({
+              morning: data.filter(med => med.morning === "true"), // morining중 true인 약
+              lunch: data.filter(med => med.lunch === "true"),
+              dinner: data.filter(med => med.dinner === "true")
+          });
+
+      
+      } catch (error) {
+          console.error('데이터 못받아옴!! ', error);
+      }
+  };
+
     // 데이터 받아오기
     useEffect (() => {
-        const getMedicineData = async () => {
-            try {
-                // const response = await axios.get('http://localhost:8080/schedule/get',
-                //     {
-                //         headers: {
-                //             Authorization: `Bearer ${Ltoken}`,
-                //         },
-                //     });
-                 // 엔드포인트 수정하기
-
-                // 임의 데이터 사용 (DB에 사용자가 여러명 있는데 그 중 특정 1사람 골라내기 위해 토큰을 일단 가져오면 그거에 해당하는 약들만 가져와짐)
-                const data = [
-                    {title: '타이레놀',
-                        morning: 'true',
-                        lunch:'true',
-                        dinner: 'true',
-                        scheduleMedicineId: 1
-                         
-                    },
-                    {title: '비타민C', morning: 'true', lunch:'false', dinner: 'false', scheduleMedicineId: 2 },
-                    {title: '고혈압약', morning: 'false', lunch:'true', dinner: 'false', scheduleMedicineId: 3},
-                    {title: '유산균', morning: 'false', lunch:'false', dinner: 'true',scheduleMedicineId: 4},
-                ];
-
-
-                // true인 것만 필터링됨. 아침,점심,저녁 true인것만 띄워야하니까 이건 필요 
-                setMedicines({
-                    morning: data.filter(med => med.morning === "true"), // morining중 true인 약
-                    lunch: data.filter(med => med.lunch === "true"),
-                    dinner: data.filter(med => med.dinner === "true")
-                });
-
-            
-            } catch (error) {
-                console.error('데이터 못받아옴!! ', error);
-            }
-        };
-
         getMedicineData(); // 함수 호출돼서 async 함수 실행됨 
     }, [Ltoken, isFormSubmitted]);
 
-    //input의 데이터를 업데이트 
+    // input의 데이터를 업데이트 
     const handleInputChange = (e, index) => {
         const { name, value, checked, type } = e.target;
+        console.log(name, value, checked, type, 'ㅎㅇ')
         const newPlusMedicines = [...plusMedicines];
         newPlusMedicines[index][name] = type === 'checkbox' ? checked : value;
         setPlusMedicines(newPlusMedicines);
@@ -67,24 +78,30 @@ export default function CheckedMedicine({ Ltoken }) {
         // }));
     };
 
-    //버튼 클릭하면 post 되도록 (등록완료)
     const handleFormSubmit = async (e) => {
-        e.preventDefault();
-        try {
-            for (const newMedicine of plusMedicines) {
-                await axios.post('http://team4back.sku-sku.com/schedule/add', newMedicine, {
-                    headers: {
-                        Authorization: `Bearer ${Ltoken}`,
-                        'Content-Type': 'application/json',
-                    },
-                });
-            }
-            
-            setIsFormSubmitted(true);
-        } catch (error) {
-            console.error('약을 등록하는데 실패했습니다.', error);
-        }
+      e.preventDefault();
+      console.log(plusMedicines);
+      console.log(`Bearer ${Ltoken}`);
+  
+      try {
+        const response = await axios.post(
+          'http://13.209.29.41:8080/schedule/add',
+          plusMedicines, // 전송할 데이터
+          {
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${Ltoken}`,
+            },
+          }
+        );
+  
+        console.log(response, '응답');
+        setIsFormSubmitted(true);
+      } catch (error) {
+        console.error('약을 등록하는데 실패했습니다.', error);
+      }
     };
+  
 
     const addNewForm = () => {
         setPlusMedicines([...plusMedicines, { title: '', morning: false, lunch: false, dinner: false }]);
@@ -94,10 +111,10 @@ export default function CheckedMedicine({ Ltoken }) {
     // // 약 복용 유무 보내기 (근데 안보내짐..) 
     const handleTakeMedicine = async(med,timeOfDay) => {
         try {
-            await axios.post('http://localhost:8080/api/medicine-check/toggle', {scheduleMedicineId : med.scheduleMedicineId, timeOfDay}, {
-                headers: {
-                    Authorization: `Bearer ${Ltoken}`,
-                },
+            await axios.post('http://13.209.29.41:8080/api/medicine-check/toggle', {scheduleMedicineId : med.scheduleMedicineId, timeOfDay}, {
+              headers: {
+                Authorization: `Bearer ${Ltoken}`,
+              },
             });
             //     id: 1,
             //     title: 'foo',
@@ -107,9 +124,6 @@ export default function CheckedMedicine({ Ltoken }) {
             //     headers: {
             //       'Content-type': 'application/json; charset=UTF-8',
             //     },
-            
-                
-                
             //     // },
             // });
             setMedicines(prevState => ({
@@ -150,12 +164,6 @@ export default function CheckedMedicine({ Ltoken }) {
       </div>
     );
     };
-
-
-  
-
-   
-    
 
     // const medicine = medicines.map((Medicine, index) => {
     //     return (
