@@ -15,7 +15,7 @@ const About = () => {
 						Id Fit과 함께 하세요!
 					</span>
 					<span className='font-medium text-[25px] text-[#535F76]'>
-						지적 발달 장애인을 위한 맞춤 운동 서비스
+						지적∙발달 장애인을 위한 맞춤형 운동 서비스
 					</span>
 				</div>
 				<div>
