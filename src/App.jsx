@@ -7,11 +7,10 @@ import SignupAgree from "./pages/Signup/SignupAgree";
 import SignupInfo from "./pages/Signup/SignupInfo";
 import Login from "./pages/Login";
 import Parents from "./component/Parents/Parents";
-import ChildInfo from "./component/Parents/Child/ChildInfo";
-import ChildKey from "./component/Parents/Child/ChildKey";
+import ChildInfo from "./pages/Signup/Child/ChildInfo";
+import ChildKey from "./pages/Signup/Child/ChildKey";
 import Mypage from "./component/Mypage/Mypage";
 import MyProfile from "./component/Mypage/MyProfile";
-import BMI from "./component/Mypage/BMI";
 import BMIChart from "./component/Mypage/BMIChart";
 import ParentsProfile from "./component/Parents/ParentsProfile";
 import FitHealth from "./component/FitHealth/FitHealth";
@@ -79,7 +78,6 @@ function App() {
 					<Route path='/ChildKey' element={<ChildKey />} />
 					{/* Mypage: 마이페이지 */}
 					<Route path='/Mypage' element={<Mypage />} />
-					<Route path='/BMI' element={<BMI />} />
 					<Route path='/BMIChart' element={<BMIChart />} />
 					<Route
 						path='/MyProfile'

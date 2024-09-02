@@ -86,7 +86,7 @@ const Muscle = () => {
 						className=' flex flex-col bg-white px-[10px] py-[15px] rounded-[8px]'
 						to='https://youtu.be/_FhgkNZkxcY?si=ligsZYb3ok1iGSnG'
 					>
-						<div className='flex justify-center'>
+						<div className='flex justify-center h-[190px]'>
 							<Lottie
 								className='w-[300px]'
 								loop

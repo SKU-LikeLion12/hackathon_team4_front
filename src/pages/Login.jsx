@@ -103,8 +103,8 @@ export default function Login() {
 	const [activeForm, setActiveForm] = useState("guardian");
 	return (
 		<div className='Mobile flex flex-col items-center bg-[#F0F7FF] pt-[40px] pb-[20px]'>
-			<div className='flex justify-center text-[25px] text-[#208DF9] font-bold'>
-				헬스메이트
+			<div className='title flex justify-center text-[30px] text-[#208DF9] font-bold'>
+				Id FiT
 			</div>
 			<div className='flex flex-col mx-[50px] mt-[40px] mb-[30px]'>
 				<div className='flex flex-col items-start'>
