@@ -65,8 +65,8 @@ export default function SignupChild() {
 
 	return (
 		<div className='Mobile pt-[40px] pb-[20px]'>
-			<div className='flex justify-center text-[25px] text-[#208DF9] font-bold'>
-				헬스메이트
+			<div className='title flex justify-center text-[30px] text-[#208DF9] font-bold'>
+				Id FiT
 			</div>
 			<div className='flex flex-col mx-[50px] mt-[40px] mb-[30px]'>
 				<div className='flex flex-col items-start'>
@@ -74,11 +74,11 @@ export default function SignupChild() {
 						사용자 등록하기
 					</span>
 					<span className='text-[13px] mt-[25px] mb-[50px]'>
-						※ 헬스메이트의 보호자 모니터링 서비스를
-						이용하려면, 모니터링할 사용자(자녀)의 정보를
-						입력해주세요. 입력된 정보는 보호자가 사용자의
-						건강을 효율적으로 관리할 수 있도록 돕기 위해
-						사용되며, 개인정보는 안전하게 보호됩니다.
+						※ Id FiT의 보호자 모니터링 서비스를 이용하려면,
+						모니터링할 사용자(자녀)의 정보를 입력해주세요.
+						입력된 정보는 보호자가 사용자의 건강을
+						효율적으로 관리할 수 있도록 돕기 위해 사용되며,
+						개인정보는 안전하게 보호됩니다.
 					</span>
 				</div>
 				<form onSubmit={childInfosubmit}>
@@ -111,9 +111,7 @@ export default function SignupChild() {
 									className='w-[50px] bg-[#f9fafb] border-[1px] border-[#c2c8cf] rounded-[10px]px-[16px] py-[5px]'
 									type='radio'
 								/>
-								<label className='w-[50px] text-center'>
-									남자
-								</label>
+								<label className='w-[50px]'>남자</label>
 							</li>
 							<li className='flex items-center  my-[10px]'>
 								<input

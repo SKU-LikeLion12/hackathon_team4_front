@@ -48,8 +48,12 @@ const MyProfile = () => {
 		<div className='flex flex-col items-center bg-[white] h-[360px] pt-[30px] pb-[10px] px-[30px] rounded-[10px] overflow-hidden drop-shadow-md mb-[20px]'>
 			<img
 				className='w-[100px]'
-				src='img/Woman2.png'
-				alt=''
+				src={
+					child.gender === "female"
+						? "img/Woman2.png"
+						: "img/Man2.png"
+				}
+				alt={child.gender === "female" ? "Woman" : "Man"}
 			/>
 			<div className='flex flex-col items-center my-[20px]'>
 				<div className='text-[22px] font-bold pb-[5px]'>

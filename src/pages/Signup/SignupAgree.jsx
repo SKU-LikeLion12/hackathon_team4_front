@@ -36,12 +36,12 @@ export default function Signup_Agree({setState}) {
 
 	return (
 		<div className='Mobile pt-[40px] pb-[20px]'>
-			<div className='flex justify-center text-[25px] text-[#208DF9] font-bold'>
-				헬스메이트
+			<div className='title flex justify-center text-[30px] text-[#208DF9] font-bold'>
+				Id FiT
 			</div>
 			<div className='flex flex-col items-start mx-[50px] mt-[40px] mb-[30px]'>
 				<div className='flex flex-col text-[18px] font-semibold'>
-					<span>헬스메이트와 함께</span>
+					<span>Id FiT과 함께</span>
 					<span>
 						<b className='text-[#208DF9]'>건강한 순간</b>을
 						만들어 가요! 💪🏻

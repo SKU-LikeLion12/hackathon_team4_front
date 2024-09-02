@@ -251,12 +251,12 @@ export default function CheckedMedicine() {
 	// const hasMedicines = medicines.morning.length > 0 || medicines.lunch.length > 0 || medicines.dinner.length > 0;
 
 	return (
-		<div className='justify-items-center rounded-xl drop-shadow-xl bg-white w-[900px] min-h-0 m-10'>
+		<div className='justify-items-center rounded-xl drop-shadow-xl bg-white w-[700px] px-[20px] py-[15px] min-h-0 m-10 font-medium'>
 			<div className='flex justify-center'>
 				<button
-					className={`px-4 py-2 mx-2 border-b-2 w-full ${
+					className={`px-4 pb-[15px] mx-2 border-b-2 w-[80%] font-extrabold ${
 						activeTab === "tab1"
-							? "border-b-red-500 text-blue-500"
+							? "border-b-[2px] border-[#208df9] text-blue-500"
 							: "border-b-lightgray text-[#dddcde]"
 					}`}
 					onClick={() => setActiveTab("tab1")}
@@ -264,10 +264,10 @@ export default function CheckedMedicine() {
 					오늘 먹을 약
 				</button>
 				<button
-					className={`px-4 py-2 mx-2 border-b-2 w-full ${
+					className={`px-4 pb-[15px] mx-2 border-b-2 w-[80%] font-extrabold ${
 						activeTab === "tab2"
-							? "border-b-red-500 text-blue-500"
-							: "border-b-ligthgray text-[#dddcde]"
+							? "border-b-[2px] border-[#208df9] text-blue-500"
+							: "border-b-lightgray text-[#dddcde]"
 					}`}
 					onClick={() => setActiveTab("tab2")}
 				>
@@ -297,48 +297,50 @@ export default function CheckedMedicine() {
 										onChange={(e) =>
 											handleInputChange(e, index)
 										}
-										className='w-full px-3 py-2 border rounded'
+										className='w-full px-3 py-2 border-[2px] rounded'
 										required
 									/>
 								</div>
-								<div className='flex items-center mb-4'>
-									<label className='px-3 block text-gray-700'>
-										아침
-									</label>
-									<input
-										type='checkbox'
-										name='morning'
-										checked={plusMedicines.morning}
-										onChange={(e) =>
-											handleInputChange(e, index)
-										}
-									/>
-								</div>
-								<div className='flex items-center mb-4'>
-									<label className='px-3 block text-gray-700'>
-										점심
-									</label>
-									<input
-										type='checkbox'
-										name='lunch'
-										checked={plusMedicines.lunch}
-										onChange={(e) =>
-											handleInputChange(e, index)
-										}
-									/>
-								</div>
-								<div className='flex items-center mb-4'>
-									<label className='px-3 block text-gray-700'>
-										저녁
-									</label>
-									<input
-										type='checkbox'
-										name='dinner'
-										checked={plusMedicines.dinner}
-										onChange={(e) =>
-											handleInputChange(e, index)
-										}
-									/>
+								<div className='flex justify-center'>
+									<div className='flex flex-col items-center'>
+										<label className='px-3 block text-gray-700 pb-[10px] mx-[10px]'>
+											아침
+										</label>
+										<input
+											type='checkbox'
+											name='morning'
+											checked={plusMedicines.morning}
+											onChange={(e) =>
+												handleInputChange(e, index)
+											}
+										/>
+									</div>
+									<div className='flex flex-col items-center'>
+										<label className='px-3 block text-gray-700 pb-[10px] mx-[10px]'>
+											점심
+										</label>
+										<input
+											type='checkbox'
+											name='lunch'
+											checked={plusMedicines.lunch}
+											onChange={(e) =>
+												handleInputChange(e, index)
+											}
+										/>
+									</div>
+									<div className='flex flex-col items-center'>
+										<label className='px-3 block text-gray-700 pb-[10px] mx-[10px]'>
+											저녁
+										</label>
+										<input
+											type='checkbox'
+											name='dinner'
+											checked={plusMedicines.dinner}
+											onChange={(e) =>
+												handleInputChange(e, index)
+											}
+										/>
+									</div>
 								</div>
 							</div>
 						))}
