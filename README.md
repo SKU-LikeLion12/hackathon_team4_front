@@ -16,7 +16,7 @@
 <br/>
 
 ### 🙋🏻‍♂️ 팀원 소개
-| 기획 및 디자인 | FRONTEND | FRONTEND | BACKEND | BACKEND |
+| PM/Design | FRONTEND | FRONTEND | BACKEND | BACKEND |
 |:-:|:-:|:-:|:-:|:-:|
 | 기하은 | 강지영 | 노은아 | 권민욱 | 박준범 |
 | <img src="https://github.com/user-attachments/assets/05111859-0ac6-4f52-a6bc-3e8f20a235f0" width="110px" /> | <img src="https://github.com/user-attachments/assets/7e9b587b-d028-4324-a5ea-fcae774d01dc"  width="100px"/> | <img src="https://github.com/user-attachments/assets/1f946f14-d910-49f1-bb32-bacf16eb3b46"  width="100px"/> | <img src="https://github.com/user-attachments/assets/2ba550be-d0d7-48df-931f-3f8a4bbb81bc"  width="100px"/> | <img src="https://github.com/user-attachments/assets/605aa956-c7e7-42fb-ba98-f86f681780a8"  width="100px"/> |
