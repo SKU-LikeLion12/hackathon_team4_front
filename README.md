@@ -95,3 +95,5 @@
 | BMI / 운동 / 하루 건강 체크 모니터링 |
 |:-:|
 | <img src="https://github.com/user-attachments/assets/539bf1c2-759b-449f-8a12-43ffc5f48f2c"  width="700px"/> |
+
+![하루건강체크gif](https://github.com/user-attachments/assets/88d467ec-5b95-4e55-8a33-a50278fd2164)
