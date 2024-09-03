@@ -19,7 +19,7 @@
 | PM/Design | FRONTEND | FRONTEND | BACKEND | BACKEND |
 |:-:|:-:|:-:|:-:|:-:|
 | 기하은 | 강지영 | 노은아 | 권민욱 | 박준범 |
-| <img src="img/기하은.png" width="110px" /> | <img src="./images/강지영.png"  width="100px"/> | <img src="https://github.com/user-attachments/assets/1f946f14-d910-49f1-bb32-bacf16eb3b46"  width="100px"/> | <img src="https://github.com/user-attachments/assets/2ba550be-d0d7-48df-931f-3f8a4bbb81bc"  width="100px"/> | <img src="https://github.com/user-attachments/assets/605aa956-c7e7-42fb-ba98-f86f681780a8"  width="100px"/> |
+| ![기하은](https://github.com/user-attachments/assets/1de28e9b-0091-4f52-9d66-bed1999ca6aa) |![강지영](https://github.com/user-attachments/assets/5f3abd56-cc35-429d-99e0-dec54e8dea23) | ![노은아](https://github.com/user-attachments/assets/940304f9-811a-4a4f-a022-43ead62b967e) |![권민욱](https://github.com/user-attachments/assets/59f431ea-b95a-4ed6-9e89-2c2ee68f1c2c) | ![박준범](https://github.com/user-attachments/assets/841f4cf0-f37b-429c-bbdf-98af2520ef31) |
 |<a target="_blank" href="https://github.com/haeun0219"><img src="https://img.shields.io/badge/Github-181717?style=flat-square&logo=github&logoColor=white" /></a>|<a target="_blank" href="https://github.com/ungheeyo"><img src="https://img.shields.io/badge/Github-181717?style=flat-square&logo=github&logoColor=white" /></a>|<a target="_blank" href="https://github.com/eunah112"><img src="https://img.shields.io/badge/Github-181717?style=flat-square&logo=github&logoColor=white" /></a>|<a target="_blank" href="https://github.com/Blueturtle08"><img src="https://img.shields.io/badge/Github-181717?style=flat-square&logo=github&logoColor=white" /></a>|<a target="_blank" href="https://github.com/ttotto0421"><img src="https://img.shields.io/badge/Github-181717?style=flat-square&logo=github&logoColor=white" /></a>|
 
 <br/>
@@ -36,64 +36,62 @@
 
 | About |
 |:-:|
-| <img src="https://github.com/user-attachments/assets/4e2ea61b-260d-498c-ab84-9a5f34566b60"  width="700px"/> |
+| ![AboutGif](https://github.com/user-attachments/assets/2e5fe5d4-aca3-44e3-b940-498d422364fe) |
 
 - **회원가입 및 로그인 <br/>**
 
 | 회원가입 이용약관 동의 |
 |:-:|
-|<img src="https://github.com/user-attachments/assets/55aaeadb-f82b-4f64-9112-fd7f926c736a"  width="700px"/> |
+|![회원가입(동의)1](https://github.com/user-attachments/assets/22ac509c-3fac-481c-b45c-65a832a305be) |
 
 | 회원가입 보호자 정보 수집 |
 |:-:|
-| <img src="https://github.com/user-attachments/assets/4a79bce3-ba77-4d94-be10-a2cc0525ebe3"  width="700px"/> |
+|![회원가입 정보수집](https://github.com/user-attachments/assets/45cdf5cf-2a48-4a84-927b-08a3dca706b6) |
 
 | 사용자 정보 수집 |
 |:-:|
-| <img src="https://github.com/user-attachments/assets/54cb43c7-db9e-49b3-9d6b-37f050b57cae"  width="700px"/> |
+| ![회원가입3](https://github.com/user-attachments/assets/6a106493-9d6c-41be-a888-216a48b324fd) |
 
 | 고유키 발급(회원가입 완료) |
 |:-:|
-| <img src="https://github.com/user-attachments/assets/dee7e7a7-3acd-4c7a-abac-3b08ce8e62a0"  width="700px"/> |
+| ![회원가입4](https://github.com/user-attachments/assets/7cefb13d-fb0f-4f03-85f4-ceab2d88b913) |
 
 | 보호자 로그인 | 자녀 로그인 |
 |:-:|:-:|
-| <img src="https://github.com/user-attachments/assets/af5ae1bb-1598-4134-a118-51e02da0a56d"  width="340px"/> | <img src="https://github.com/user-attachments/assets/d339c7d9-fcac-482e-973b-ff25461fa612"  width="340px"/> |
+| ![로그인1](https://github.com/user-attachments/assets/53e41510-682b-4b1c-ae46-5474ff81596d) | ![로그인2](https://github.com/user-attachments/assets/0496365c-1470-4855-b380-b1cc7466652c) |
 
 - **운동 추천 서비스 <br/>**
   
 | 중요근육 |
 |:-:|
-| <img src="https://github.com/user-attachments/assets/d1da830e-9e4f-4f02-9b14-6cb560b638cc"  width="700px"/> |
+| ![중요근육gif](https://github.com/user-attachments/assets/a02c0f2a-95a9-40fe-b3a8-4db3b7584630) |
 
 | 상체 |
 |:-:|
-| <img src="https://github.com/user-attachments/assets/3a3b87f2-2e66-4cdc-8a9a-03f3c0f21510"  width="700px"/> |
+| ![상체GIF](https://github.com/user-attachments/assets/83df23e9-d4b7-4f4a-9306-33b4ff7afb46) |
 
 | 하체 |
 |:-:|
-| <img src="https://github.com/user-attachments/assets/6e59ed8a-0042-42c6-b835-e6735845098b"  width="700px"/> |
+| ![하체GIF](https://github.com/user-attachments/assets/d31662c2-e502-44a8-8747-c1639f485ece) |
 
 - **하루 건강 체크 서비스 <br/>**
   
 | 하루 건강 체크 |
 |:-:|
-| <img src="https://github.com/user-attachments/assets/67c447c2-4e16-4ef6-ae89-f351e09a86b9"  width="700px"/> |
+| ![하루건강체크gif](https://github.com/user-attachments/assets/e9817fd8-f628-46d4-a57d-fa62ff95dba1) |
 
 - **약 복용 체크 서비스 <br/>**
   
 | 약 등록하기 |
 |:-:|
-| <img src="https://github.com/user-attachments/assets/0dfac7ab-1f44-4492-b43b-c106dd8102fb"  width="700px"/> |
+| ![약체크gif](https://github.com/user-attachments/assets/5b3bc7db-8084-4596-a69e-aae8b245d2ac) |
 
 | 약 섭취 현황 그래프 |
 |:-:|
-| <img src="https://github.com/user-attachments/assets/0bdcf403-2284-443f-afca-8ccb545d849f"  width="700px"/> |
+| ![복용한 약 그래프](https://github.com/user-attachments/assets/eac6d615-c2ad-443c-ae8c-0facece928a5) |
 
 - **보호자 모니터링 서비스 <br/>**
   
 | BMI / 운동 / 하루 건강 체크 모니터링 |
 |:-:|
-| <img src="https://github.com/user-attachments/assets/539bf1c2-759b-449f-8a12-43ffc5f48f2c"  width="700px"/> |
-
-![하루건강체크gif](https://github.com/user-attachments/assets/88d467ec-5b95-4e55-8a33-a50278fd2164)
+| ![보호자모니터링gif](https://github.com/user-attachments/assets/0aaa0503-b9e7-47ed-9d94-5dcc731928a0) |
